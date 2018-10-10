@@ -1,0 +1,32 @@
+{
+  "name": "messanger",
+  "version": "0.0.1",
+  "description": "technotrack project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev.git"
+  },
+  "keywords": [
+    "frontend"
+  ],
+  "author": "Denis Stasyev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev/issues"
+  },
+  "homepage": "https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev#readme",
+  "dependencies": {
+    "npm": "^6.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
