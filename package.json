@@ -4,8 +4,10 @@
   "description": "technotrack project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/eslint/bin/eslint.js ./src/"
+    "say-hello": "echo 'Hello, world!'",
+    "lint": "./node_modules/eslint/bin/eslint.js ./src/",
+    "clean": "rm -r dist && mkdir dist",
+    "build": "npm run clean && webpack"
   },
   "repository": {
     "type": "git",
