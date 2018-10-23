@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle, no-unused-vars */
+
 import styles from './index.css';
 import shadowStyles from './shadow.css';
 

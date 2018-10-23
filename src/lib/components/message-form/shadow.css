@@ -1,5 +1,8 @@
-form-input {
-	width: 100%;
+.chat {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
 }
 
 .result {
@@ -9,3 +12,30 @@ form-input {
 input[type=submit] {
 	visibility: collapse;
 }
+
+form-input {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	padding: 16px 88px 16px 16px;
+	position: relative;
+
+	border-top: 1px solid gray;
+	background-color: #ffffff;
+	font-size: 24px;
+	line-height: 56px;
+	letter-spacing: 1px;
+}
+
+.attachment {
+	background: url("../../../../static/chat/attachment.png") no-repeat;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 12px;
+	right: 16px;
+}
+

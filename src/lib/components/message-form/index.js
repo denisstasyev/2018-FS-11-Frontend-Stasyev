@@ -1,15 +1,19 @@
+/* eslint-disable no-underscore-dangle, no-unused-vars */
+
 // import styles from './index.css';
 import shadowStyles from './shadow.css';
+import getReadableSize from '../../../utils/getReadableSize';
 
 const slotName = 'message-input';
 
 const template = `
   <style>${shadowStyles.toString()}</style>
-  <form>
+  <form class="chat">
     <div class="result"></div>
-    <form-input name="message_text" placeholder="Введите сообщеине" slot="message-input">
-      <span slot="icon"></span>
+    <form-input type="text" name="message_text" placeholder="Введите сообщение" slot="message-input">
+      <span slot="icon" class="attachment"></span>
     </form-input>
+    <div class="getReadableSize"></div>
   </form>
 `;
 
@@ -33,10 +37,13 @@ class MessageForm extends HTMLElement {
   _initElements() {
     const form = this.shadowRoot.querySelector('form');
     const message = this.shadowRoot.querySelector('.result');
+    const readableSize = this.shadowRoot.querySelector('.getReadableSize');
     this._elements = {
       form,
       message,
+      readableSize,
     };
+    readableSize.innerHTML = `${getReadableSize(100000)}`;
   }
 
   _addHandlers() {
@@ -54,7 +61,7 @@ class MessageForm extends HTMLElement {
   }
 
   _onKeyPress(event) {
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       this._elements.form.dispatchEvent(new Event('submit'));
     }
   }
