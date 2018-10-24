@@ -1,11 +1,14 @@
 .chat {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	height: 100vh;
 	width: 100vw;
 }
 
 .result {
+	display: flex;
+	align-self: flex-end;
+	position: relative;
 	color: red;
 }
 
@@ -23,11 +26,11 @@ form-input {
 	padding: 16px 88px 16px 16px;
 	position: relative;
 
-	border-top: 1px solid gray;
+	border-top: 10px solid gray;
 	background-color: #ffffff;
 	font-size: 24px;
 	line-height: 56px;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 }
 
 .attachment {
