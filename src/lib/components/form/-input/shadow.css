@@ -1,0 +1,11 @@
+input {
+	border: 0;
+	outline: none;
+	width: calc(100% - 2px);
+	background-color: transparent;
+}
+
+:host {
+	display: inline-block;
+	border: 2px solid rgba(25, 25, 25, 0.32);
+}
