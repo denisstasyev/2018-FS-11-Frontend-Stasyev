@@ -1,0 +1,29 @@
+
+
+body {
+    background-color: #ffffff;
+}
+
+.message-test {
+    color: dimgrey;
+    font-size: 3vh;
+    background: ghostwhite;
+    border-radius: 40px;
+    border: 1px solid;
+    text-align: right;
+    box-sizing: border-box;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    width: fit-content;
+}
+
+.message-list {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	right: 1vw;
+	overflow: scroll;
+	height: 90vh;
+	align-items: flex-end;
+	width: 98vw;
+}

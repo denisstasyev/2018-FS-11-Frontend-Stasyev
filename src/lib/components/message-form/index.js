@@ -2,17 +2,17 @@
 
 // import styles from './index.css';
 import shadowStyles from './shadow.css';
-import getReadableSize from '../../../utils/getReadableSize';
+// import getReadableSize from '../../../utils/getReadableSize';
 
 const slotName = 'message-input';
 
 const template = `
   <style>${shadowStyles.toString()}</style>
   <form class="chat">
+    <div class="result"></div>
     <form-input type="text" name="message_text" placeholder="Введите сообщение" slot="message-input">
       <span slot="icon" class="attachment"></span>
     </form-input>
-    <div class="result"></div>
   </form>
 `;
 
@@ -48,18 +48,62 @@ class MessageForm extends HTMLElement {
     // this._elements.inputSlot.addEventListener('slotchange', this._onSlotChange.bind(this));
   }
 
+  // _onSubmit(event) {
+  //   this._elements.message.innerText = Array.from(this._elements.form.elements)
+  //     .map(el => el.value)
+  //     .join(', ');
+  //   event.preventDefault();
+  //   return false;
+  // }
+
+  // ////////////////////////////////////////////////
+
   _onSubmit(event) {
-    this._elements.message.innerText = getReadableSize(
-      parseInt(
-        Array.from(this._elements.form.elements)
-          .map(el => el.value)
-          .join(', '),
-        10,
-      ),
-    );
+    const messageList = document.body.querySelector('.message-list');
+
+    const newMessage = document.createElement('div');
+    newMessage.innerText = Array.from(this._elements.form.elements)
+      .map(el => el.value)
+      .join(', ');
+
+    if (newMessage.innerText === '') {
+      event.preventDefault();
+      return false;
+    }
+
+    newMessage.className = 'message-test';
+    messageList.appendChild(newMessage);
+
+    const formInput = this._elements.form.querySelector('form-input');
+    formInput._elements.input.value = '';
+
+    this._elements.form.reset();
+
     event.preventDefault();
+    this._onSubmitFromFriend('Hello');
     return false;
   }
+
+  static _onSubmitFromFriend(text) {
+    const messageList = document.body.querySelector('.message-list');
+
+    const newMessage = document.createElement('div');
+    newMessage.innerText = text;
+
+    if (newMessage.innerText === '') {
+      event.preventDefault();
+      return false;
+    }
+
+    newMessage.className = 'message-test';
+    newMessage.style.color = 'green';
+    newMessage.style.alignSelf = 'flex-start';
+
+    messageList.appendChild(newMessage);
+    return false;
+  }
+
+  // ///////////////////////////////////////////////////////
 
   _onKeyPress(event) {
     if (event.keyCode === 13) {

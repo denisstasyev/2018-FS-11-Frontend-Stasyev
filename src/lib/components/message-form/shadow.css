@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column-reverse;
 	height: 100vh;
-	width: 100vw;
+	width: 98vw;
 }
 
 .result {
@@ -41,4 +41,3 @@ form-input {
 	top: 12px;
 	right: 16px;
 }
-
