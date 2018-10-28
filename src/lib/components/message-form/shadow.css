@@ -1,15 +1,38 @@
-.chat {
+.message-list {
 	display: flex;
-	flex-direction: column-reverse;
-	height: 100vh;
-	width: 98vw;
+	flex-direction: column;
+	position: relative;
+	height: calc(97vh - 66px);
+	width: calc(100% - 2px);
+	overflow-y: scroll;
 }
 
-.result {
-	display: flex;
-	align-self: flex-end;
-	position: relative;
-	color: red;
+.message {
+	color: rgba(25, 25, 25, 0.32);
+	font-size: 3vh;
+	background: ghostwhite;
+	border-radius: 10px;
+	border: 1px solid;
+	box-sizing: border-box;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	width: fit-content;
+	margin: 2px;
+	padding: 3px;
+	clear: both;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.message-from {
+	float: right;
+	color: blue;
+	background-color: transparent;
+}
+
+.message-to {
+	float: left;
+	color: black;
+	background-color: transparent;
 }
 
 input[type=submit] {
@@ -26,18 +49,28 @@ form-input {
 	padding: 16px 88px 16px 16px;
 	position: relative;
 
-	border-top: 10px solid gray;
 	background-color: #ffffff;
 	font-size: 24px;
 	line-height: 56px;
 	letter-spacing: 2px;
+	margin: 10px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 }
 
-.attachment {
+.attachmentIcon {
 	background: url("../../../../static/chat/attachment.png") no-repeat;
 	width: 24px;
 	height: 24px;
 	position: absolute;
 	top: 12px;
 	right: 16px;
+}
+
+.attachmentFile {
+	display: none;
+}
+
+.preview {
+	width: 30vw;
+	height: 30vh;
 }

@@ -2,17 +2,29 @@
 
 // import styles from './index.css';
 import shadowStyles from './shadow.css';
-// import getReadableSize from '../../../utils/getReadableSize';
+import getReadableSize from '../../../utils/readableSize/getReadableSize';
 
 const slotName = 'message-input';
 
 const template = `
   <style>${shadowStyles.toString()}</style>
-  <form class="chat">
-    <div class="result"></div>
+  <form>
+  
+    <div id="message-list" class="message-list"> 
+      <div class="message">
+        <div class="message-from">Привет, как дела?</div>
+      </div>
+      <div class="message">
+        <div class="message-to">Хорошо!</div>
+      </div>
+    </div>
+
     <form-input type="text" name="message_text" placeholder="Введите сообщение" slot="message-input">
-      <span slot="icon" class="attachment"></span>
+      <span id="selection" class="attachmentIcon" slot="icon">
+        <input id="attachment" type="file" multiple class="attachmentFile">
+      </span>
     </form-input>
+
   </form>
 `;
 
@@ -35,75 +47,180 @@ class MessageForm extends HTMLElement {
 
   _initElements() {
     const form = this.shadowRoot.querySelector('form');
-    const message = this.shadowRoot.querySelector('.result');
+    const message = this.shadowRoot.querySelector('form-input');
+    const messageList = this.shadowRoot.querySelector('#message-list');
+    const selection = this.shadowRoot.querySelector('#selection');
+    const attachment = this.shadowRoot.querySelector('#attachment');
     this._elements = {
       form,
       message,
+      messageList,
+      selection,
+      attachment,
     };
+    this._initMessageList();
   }
 
   _addHandlers() {
     this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
     this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
+    // this._elements.form.addEventListener('new-message', this._onNewMessage.bind(this));
+
+    this._elements.selection.addEventListener('click', this._onSelectFiles.bind(this));
+    this._elements.attachment.addEventListener('change', this._onAttachFiles.bind(this));
+    this._elements.messageList.addEventListener('dragenter', this._onDragenter.bind(this));
+    this._elements.messageList.addEventListener('dragover', this._onDragover.bind(this));
+    this._elements.messageList.addEventListener('drop', this._onDrop.bind(this));
     // this._elements.inputSlot.addEventListener('slotchange', this._onSlotChange.bind(this));
   }
 
-  // _onSubmit(event) {
-  //   this._elements.message.innerText = Array.from(this._elements.form.elements)
-  //     .map(el => el.value)
-  //     .join(', ');
-  //   event.preventDefault();
-  //   return false;
-  // }
+  _initMessageList() {
+    Array.from(this._getMessageListFromLocalStorage()).map((message) => {
+      this._sendMessage(message);
+      return this;
+    });
+  }
 
-  // ////////////////////////////////////////////////
+  _getStorage() {
+    return localStorage;
+  }
+
+  _getMessageListFromLocalStorage() {
+    let messageList = this._getStorage().getItem('message-list');
+    if (messageList) {
+      messageList = JSON.parse(messageList);
+    } else {
+      messageList = []; // Array
+    }
+    return messageList;
+  }
+
+  _addMessageToLocalStorage(text) {
+    const messageList = this._getMessageListFromLocalStorage();
+    if (text) {
+      Array.from(messageList).push(text);
+    }
+    this._getStorage().setItem('message-list', JSON.stringify(messageList));
+  }
+
+  _sendMessage(text) {
+    const message = document.createElement('div');
+    message.className = 'message';
+    const messageFrom = document.createElement('div');
+    messageFrom.innerText = text;
+    messageFrom.className = 'message-from';
+    message.appendChild(messageFrom);
+    this._elements.messageList.appendChild(message);
+    // this._elements.attachment.dispatchEvent(new Event('send-message'));
+  }
 
   _onSubmit(event) {
-    const messageList = document.body.querySelector('.message-list');
-
-    const newMessage = document.createElement('div');
-    newMessage.innerText = Array.from(this._elements.form.elements)
+    const message = Array.from(this._elements.form.elements)
       .map(el => el.value)
       .join(', ');
-
-    if (newMessage.innerText === '') {
+    const arr = message.toString().split(', ');
+    // simple message doesn't work
+    // console.log(arr[1]);
+    if (arr[1] === '') {
       event.preventDefault();
       return false;
     }
+    if (arr[1] === 'geolocation') {
+      this._sendGeoPosition();
+      event.preventDefault();
+      return false;
+    }
+    // const messageEvent = new CustomEvent('new-message', {
+    //   bubbles: false,
+    //   detail: message,
+    // });
+    // this.dispatchEvent(messageEvent);
+    // console.log(messageEvent);
 
-    newMessage.className = 'message-test';
-    messageList.appendChild(newMessage);
+    this._sendMessage(arr[1]);
+    this._addMessageToLocalStorage(arr[1]);
 
     const formInput = this._elements.form.querySelector('form-input');
     formInput._elements.input.value = '';
 
-    this._elements.form.reset();
-
     event.preventDefault();
-    this._onSubmitFromFriend('Hello');
     return false;
   }
 
-  static _onSubmitFromFriend(text) {
-    const messageList = document.body.querySelector('.message-list');
-
-    const newMessage = document.createElement('div');
-    newMessage.innerText = text;
-
-    if (newMessage.innerText === '') {
-      event.preventDefault();
-      return false;
-    }
-
-    newMessage.className = 'message-test';
-    newMessage.style.color = 'green';
-    newMessage.style.alignSelf = 'flex-start';
-
-    messageList.appendChild(newMessage);
-    return false;
+  _onNewMessage(event) {
+    // console.log(event.detail);
+    this._sendMessage(event.detail);
+    this._addMessageToLocalStorage(event.detail);
   }
 
-  // ///////////////////////////////////////////////////////
+  // /////////////////////////////////
+  _onSelectFiles(event) {
+    this._elements.attachment.click();
+  }
+
+  _onAttachFiles(event) {
+    this._handleFiles(this._elements.attachment.files);
+  }
+
+  _handleFiles(files) {
+    Array.from(files).forEach((file) => {
+      const imageType = /image.*/;
+      if (file.type.match(imageType)) {
+        const img = document.createElement('img');
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          img.src = reader.result;
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          img.src = file.name;
+        }
+        this._sendFile(img);
+      } else {
+        this._sendMessage(file.name);
+      }
+    });
+  }
+
+  _sendFile(file) {
+    const message = document.createElement('div');
+    message.className = 'message';
+    let messageFromFile = document.createElement('div');
+    messageFromFile = file;
+    messageFromFile.className = 'message-from preview';
+    messageFromFile.id = 'img';
+    message.appendChild(messageFromFile);
+
+    this._elements.messageList.appendChild(message);
+    // this._attachment.dispatchEvent(new Event('send-file'));
+  }
+
+  _onDragenter(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  _onDragover(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  _onDrop(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this._handleFiles(event.dataTransfer.files);
+  }
+
+  _sendGeoPosition() {
+    const context = this;
+    navigator.geolocation.getCurrentPosition((position) => {
+      context._sendMessage(
+        `latitude=${position.coords.latitude}, longitude=${position.coords.longitude}`,
+      );
+    });
+  }
 
   _onKeyPress(event) {
     if (event.keyCode === 13) {
