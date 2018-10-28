@@ -148,12 +148,10 @@ class MessageForm extends HTMLElement {
   }
 
   _onNewMessage(event) {
-    // console.log(event.detail);
     this._sendMessage(event.detail);
     this._addMessageToLocalStorage(event.detail);
   }
 
-  // /////////////////////////////////
   _onSelectFiles(event) {
     this._elements.attachment.click();
   }
