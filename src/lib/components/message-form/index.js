@@ -127,6 +127,9 @@ class MessageForm extends HTMLElement {
     }
     if (arr[1] === 'geolocation') {
       this._sendGeoPosition();
+
+      const formInput = this._elements.form.querySelector('form-input');
+      formInput._elements.input.value = '';
       event.preventDefault();
       return false;
     }
@@ -215,7 +218,9 @@ class MessageForm extends HTMLElement {
     const context = this;
     navigator.geolocation.getCurrentPosition((position) => {
       context._sendMessage(
-        `latitude=${position.coords.latitude}, longitude=${position.coords.longitude}`,
+        `Мои координаты: широта = ${position.coords.latitude}, долгота = ${
+          position.coords.longitude
+        }`,
       );
     });
   }
