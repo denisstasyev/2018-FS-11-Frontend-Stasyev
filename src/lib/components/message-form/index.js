@@ -2,7 +2,7 @@
 
 // import styles from './index.css';
 import shadowStyles from './shadow.css';
-import getReadableSize from '../../../utils/readableSize/getReadableSize';
+// import getReadableSize from '../../../utils/readableSize/getReadableSize';
 
 const slotName = 'message-input';
 
@@ -115,17 +115,16 @@ class MessageForm extends HTMLElement {
   }
 
   _onSubmit(event) {
-    const message = Array.from(this._elements.form.elements)
-      .map(el => el.value)
-      .join(', ');
-    const arr = message.toString().split(', ');
-    // simple message doesn't work
-    // console.log(arr[1]);
-    if (arr[1] === '') {
+    const message = Array.from(this._elements.form.elements).map(el => el.value)[1];
+    // const message = Array.from(this._elements.form.elements)
+    //   .map(el => el.value)
+    //   .join(', ');
+    console.log(message);
+    if (message === '') {
       event.preventDefault();
       return false;
     }
-    if (arr[1] === 'geolocation') {
+    if (message === 'geolocation') {
       this._sendGeoPosition();
 
       const formInput = this._elements.form.querySelector('form-input');
@@ -140,8 +139,8 @@ class MessageForm extends HTMLElement {
     // this.dispatchEvent(messageEvent);
     // console.log(messageEvent);
 
-    this._sendMessage(arr[1]);
-    this._addMessageToLocalStorage(arr[1]);
+    this._sendMessage(message);
+    this._addMessageToLocalStorage(message);
 
     const formInput = this._elements.form.querySelector('form-input');
     formInput._elements.input.value = '';
