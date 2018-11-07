@@ -12,11 +12,11 @@ const template = `
   <form>
   
     <div id="message-list" class="message-list"> 
-      <div class="message">
-        <div class="message-from">Привет, как дела?</div>
+      <div class="message from">
+        <div class="text-from">Привет, как дела?</div>
       </div>
-      <div class="message">
-        <div class="message-to">Хорошо!</div>
+      <div class="message to">
+        <div class="text-to">Хорошо!</div>
       </div>
     </div>
 
@@ -110,10 +110,10 @@ class MessageForm extends HTMLElement {
 
   _sendMessage(text) {
     const message = document.createElement('div');
-    message.className = 'message';
+    message.className = 'message from';
     const messageFrom = document.createElement('div');
     messageFrom.innerText = text;
-    messageFrom.className = 'message-from';
+    messageFrom.className = 'text-from';
     message.appendChild(messageFrom);
     this._elements.messageList.appendChild(message);
     // this._elements.attachment.dispatchEvent(new Event('send-message'));
@@ -124,6 +124,8 @@ class MessageForm extends HTMLElement {
     // const message = Array.from(this._elements.form.elements)
     //   .map(el => el.value)
     //   .join(', ');
+
+    // eslint-disable-next-line no-console
     console.log(message);
     if (message === '') {
       event.preventDefault();
@@ -170,6 +172,7 @@ class MessageForm extends HTMLElement {
       if (file.type.match(imageType)) {
         const img = document.createElement('img');
         const reader = new FileReader();
+        // eslint-disable-next-line func-names
         reader.onloadend = function () {
           img.src = reader.result;
         };
@@ -187,10 +190,10 @@ class MessageForm extends HTMLElement {
 
   _sendFile(file) {
     const message = document.createElement('div');
-    message.className = 'message';
+    message.className = 'message from';
     let messageFromFile = document.createElement('div');
     messageFromFile = file;
-    messageFromFile.className = 'message-from preview';
+    messageFromFile.className = 'file-from preview';
     messageFromFile.id = 'img';
     message.appendChild(messageFromFile);
 
