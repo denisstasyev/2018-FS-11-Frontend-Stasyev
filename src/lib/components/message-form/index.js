@@ -196,11 +196,13 @@ class MessageForm extends HTMLElement {
     // this._attachment.dispatchEvent(new Event('send-file'));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _onDragenter(event) {
     event.stopPropagation();
     event.preventDefault();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _onDragover(event) {
     event.stopPropagation();
     event.preventDefault();
