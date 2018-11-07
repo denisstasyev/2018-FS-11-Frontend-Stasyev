@@ -13,10 +13,10 @@ const template = `
   
     <div id="message-list" class="message-list"> 
       <div class="message from">
-        <div class="text-from">Привет, как дела?</div>
+        <div class="text-from">Привет, кто лучший ментор?</div>
       </div>
       <div class="message to">
-        <div class="text-to">Хорошо!</div>
+        <div class="text-to">Мартин!</div>
       </div>
     </div>
 
@@ -120,13 +120,13 @@ class MessageForm extends HTMLElement {
   }
 
   _onSubmit(event) {
-    const message = Array.from(this._elements.form.elements).map(el => el.value)[1];
+    // const message = Array.from(this._elements.form.elements).map(el => el.value)[1];
     // const message = Array.from(this._elements.form.elements)
     //   .map(el => el.value)
     //   .join(', ');
+    const formInput = this._elements.form.querySelector('form-input');
+    const message = formInput._elements.input.value;
 
-    // eslint-disable-next-line no-console
-    console.log(message);
     if (message === '') {
       event.preventDefault();
       return false;
@@ -145,7 +145,7 @@ class MessageForm extends HTMLElement {
       detail: message,
     });
 
-    const formInput = this._elements.form.querySelector('form-input');
+    // const formInput = this._elements.form.querySelector('form-input');
     formInput._elements.input.value = '';
 
     this.dispatchEvent(messageEvent);
@@ -223,11 +223,10 @@ class MessageForm extends HTMLElement {
   _sendGeoPosition() {
     const context = this;
     navigator.geolocation.getCurrentPosition((position) => {
-      context._sendMessage(
-        `Мои координаты: широта = ${position.coords.latitude}, долгота = ${
-          position.coords.longitude
-        }`,
-      );
+      context._sendMessage(`Мои координаты: широта = ${position.coords.latitude}, долгота = ${
+        position.coords.longitude
+      }
+      `);
     });
   }
 
