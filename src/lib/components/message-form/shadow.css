@@ -8,6 +8,11 @@
 }
 
 .message {
+	display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  max-width: 100%;
+
 	color: rgba(25, 25, 25, 0.32);
 	font-size: 3vh;
 	background: ghostwhite;
@@ -27,14 +32,21 @@
 	/* float: right; */
 	color: blue;
 	background-color: transparent;
-	flex-direction: row;
+	/* flex-direction: row; */
+	flex-direction: row-reverse; 
+	position: relative;
+	border: 6px solid transparent;
+  border-left-color: #08f;
 }
 
 .message-to {
 	/* float: left; */
 	color: black;
 	background-color: transparent;
-	flex-direction: row-reverse;
+	position: relative;
+	/* flex-direction: row-reverse; */
+	border: 6px solid transparent;
+  border-right-color: #ddd; 
 }
 
 input[type=submit] {
