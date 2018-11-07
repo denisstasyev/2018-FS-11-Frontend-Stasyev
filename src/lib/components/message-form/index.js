@@ -134,7 +134,7 @@ class MessageForm extends HTMLElement {
     if (message === 'geolocation') {
       this._sendGeoPosition();
 
-      const formInput = this._elements.form.querySelector('form-input');
+      // formInput = this._elements.form.querySelector('form-input');
       formInput._elements.input.value = '';
       event.preventDefault();
       return false;
