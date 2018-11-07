@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle, no-unused-vars */
 
 import styles from './index.css';

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle, no-unused-vars */
 
 // import styles from './index.css';
@@ -84,6 +85,7 @@ class MessageForm extends HTMLElement {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _getStorage() {
     return localStorage;
   }
