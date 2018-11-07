@@ -64,7 +64,10 @@ class MessageForm extends HTMLElement {
   _addHandlers() {
     this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
     this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
-    // this._elements.form.addEventListener('new-message', this._onNewMessage.bind(this));
+    // eslint-disable-next-line func-names
+    this.addEventListener('new-message', function (event) {
+      this._onNewMessage(event);
+    });
 
     this._elements.selection.addEventListener('click', this._onSelectFiles.bind(this));
     this._elements.attachment.addEventListener('change', this._onAttachFiles.bind(this));
@@ -157,19 +160,15 @@ class MessageForm extends HTMLElement {
       return false;
     }
 
-    // const messageEvent = new CustomEvent('new-message', {
-    //   bubbles: false,
-    //   detail: message,
-    // });
-    // this.dispatchEvent(messageEvent);
-    // console.log(messageEvent);
-
-    this._sendMessage(message);
-    this._addMessageToLocalStorage(message);
+    const messageEvent = new CustomEvent('new-message', {
+      bubbles: false,
+      detail: message,
+    });
 
     const formInput = this._elements.form.querySelector('form-input');
     formInput._elements.input.value = '';
 
+    this.dispatchEvent(messageEvent);
     event.preventDefault();
     return false;
   }

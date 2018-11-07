@@ -24,15 +24,17 @@
 }
 
 .message-from {
-	float: right;
+	/* float: right; */
 	color: blue;
 	background-color: transparent;
+	flex-direction: row;
 }
 
 .message-to {
-	float: left;
+	/* float: left; */
 	color: black;
 	background-color: transparent;
+	flex-direction: row-reverse;
 }
 
 input[type=submit] {
