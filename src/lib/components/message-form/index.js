@@ -108,7 +108,31 @@ class MessageForm extends HTMLElement {
     this._getStorage().setItem('message-list', JSON.stringify(messageList));
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  _formMessage(flag, input) {
+    const data = new FormData();
+    const date = new Date();
+    const time = `${date.getHours().toString()}:${date.getMinutes().toString()}`;
+    data.append('author', 'me');
+    data.append('time', time);
+    if (flag === 'attachment') {
+      data.append('text', null);
+      data.append('files', input);
+    }
+    if (flag === 'textMessage') {
+      data.append('text', input);
+      data.append('files', null);
+    }
+    return data;
+  }
+
   _sendMessage(text) {
+    const dataToServer = this._formMessage('textMessage', text);
+    fetch('http://localhost:8081/message', {
+      method: 'POST',
+      body: dataToServer,
+    }).then(result => console.log(result));
+
     const message = document.createElement('div');
     message.className = 'message from';
     const messageFrom = document.createElement('div');
@@ -178,9 +202,9 @@ class MessageForm extends HTMLElement {
         };
         if (file) {
           reader.readAsDataURL(file);
-        } else {
-          img.src = file.name;
-        }
+        } // else {
+        // img.src = file.name;
+        // }
         this._sendFile(img);
       } else {
         this._sendMessage(file.name);
@@ -189,6 +213,12 @@ class MessageForm extends HTMLElement {
   }
 
   _sendFile(file) {
+    const dataToServer = this._formMessage('file', file);
+    fetch('http://localhost:8081/message', {
+      method: 'POST',
+      body: dataToServer,
+    }).then(result => console.log(result));
+
     const message = document.createElement('div');
     message.className = 'message from';
     let messageFromFile = document.createElement('div');

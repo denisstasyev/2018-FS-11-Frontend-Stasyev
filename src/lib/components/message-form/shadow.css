@@ -8,6 +8,11 @@
 }
 
 .message {
+	display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  max-width: 100%;
+
 	color: rgba(25, 25, 25, 0.32);
 	font-size: 3vh;
 	border-radius: 10px;
@@ -37,12 +42,29 @@
 
 .text-from {
 	color: white;
+}
+.message-from {
+	/* float: right; */
+	color: blue;
+
 	background-color: transparent;
+	/* flex-direction: row; */
+	flex-direction: row-reverse; 
+	position: relative;
+	border: 6px solid transparent;
+  border-left-color: #08f;
 }
 
-.text-to {
+
+
+.text-to, .message-to {
+	/* float: left; */
 	color: black;
 	background-color: transparent;
+	position: relative;
+	/* flex-direction: row-reverse; */
+	border: 6px solid transparent;
+  border-right-color: #ddd; 
 }
 
 .file-from {
