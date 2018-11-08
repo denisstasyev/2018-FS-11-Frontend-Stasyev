@@ -32,6 +32,7 @@ class FormInput extends HTMLElement {
 
   _initElements() {
     const hiddenInput = document.createElement('input');
+    // hiddenInput.async = false; // чтобы гарантировать порядок
     const input = this.shadowRoot.querySelector('input');
     this.appendChild(hiddenInput);
     this._elements = {
