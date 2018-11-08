@@ -8,6 +8,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js ./src/",
     "clean": "rm -r dist && mkdir dist",
     "build": "npm run clean && webpack",
+    "show": "google-chrome ./dist/create/index.html",
     "run": "google-chrome ./dist/create/index.html"
   },
   "repository": {

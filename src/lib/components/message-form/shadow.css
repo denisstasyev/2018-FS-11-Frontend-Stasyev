@@ -4,7 +4,7 @@
 	position: relative;
 	height: calc(97vh - 66px);
 	width: calc(100% - 2px);
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .message {
@@ -15,22 +15,38 @@
 
 	color: rgba(25, 25, 25, 0.32);
 	font-size: 3vh;
-	background: ghostwhite;
 	border-radius: 10px;
 	border: 1px solid;
 	box-sizing: border-box;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+	/* padding-left: 0.5em;
+	padding-right: 0.5em; */
 	width: fit-content;
 	margin: 2px;
-	padding: 3px;
+	padding: 5px;
 	clear: both;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 }
 
+.to {
+	border-color: grey;
+	align-self: flex-start;
+	background: #ddd;
+}
+
+.from {
+	border-color: lightblue;
+	align-self: flex-end;
+	background: #08f;
+}
+
+
+.text-from {
+	color: white;
+}
 .message-from {
 	/* float: right; */
 	color: blue;
+
 	background-color: transparent;
 	/* flex-direction: row; */
 	flex-direction: row-reverse; 
@@ -39,7 +55,9 @@
   border-left-color: #08f;
 }
 
-.message-to {
+
+
+.text-to, .message-to {
 	/* float: left; */
 	color: black;
 	background-color: transparent;
@@ -47,6 +65,10 @@
 	/* flex-direction: row-reverse; */
 	border: 6px solid transparent;
   border-right-color: #ddd; 
+}
+
+.file-from {
+	background-color: transparent;
 }
 
 input[type=submit] {

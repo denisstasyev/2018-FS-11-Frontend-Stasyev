@@ -1,5 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Play);
+
 body {
-  background-color: #86f0d0;
+	background-color: #86f0d0;
+	font-family: 'Play', sans-serif;
 }
 
 .chat {

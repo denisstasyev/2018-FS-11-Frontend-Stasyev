@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle, no-unused-vars */
 
 // import styles from './index.css';
@@ -11,11 +12,11 @@ const template = `
   <form>
   
     <div id="message-list" class="message-list"> 
-      <div class="message">
-        <div class="message-from">Привет, как дела?</div>
+      <div class="message from">
+        <div class="text-from">Привет, кто лучший ментор?</div>
       </div>
-      <div class="message">
-        <div class="message-to">Хорошо!</div>
+      <div class="message to">
+        <div class="text-to">Мартин!</div>
       </div>
     </div>
 
@@ -84,6 +85,7 @@ class MessageForm extends HTMLElement {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _getStorage() {
     return localStorage;
   }
@@ -132,21 +134,23 @@ class MessageForm extends HTMLElement {
     }).then(result => console.log(result));
 
     const message = document.createElement('div');
-    message.className = 'message';
+    message.className = 'message from';
     const messageFrom = document.createElement('div');
     messageFrom.innerText = text;
-    messageFrom.className = 'message-from';
+    messageFrom.className = 'text-from';
     message.appendChild(messageFrom);
     this._elements.messageList.appendChild(message);
     // this._elements.attachment.dispatchEvent(new Event('send-message'));
   }
 
   _onSubmit(event) {
-    const message = Array.from(this._elements.form.elements).map(el => el.value)[1];
+    // const message = Array.from(this._elements.form.elements).map(el => el.value)[1];
     // const message = Array.from(this._elements.form.elements)
     //   .map(el => el.value)
     //   .join(', ');
-    console.log(message);
+    const formInput = this._elements.form.querySelector('form-input');
+    const message = formInput._elements.input.value;
+
     if (message === '') {
       event.preventDefault();
       return false;
@@ -154,7 +158,7 @@ class MessageForm extends HTMLElement {
     if (message === 'geolocation') {
       this._sendGeoPosition();
 
-      const formInput = this._elements.form.querySelector('form-input');
+      // formInput = this._elements.form.querySelector('form-input');
       formInput._elements.input.value = '';
       event.preventDefault();
       return false;
@@ -165,7 +169,7 @@ class MessageForm extends HTMLElement {
       detail: message,
     });
 
-    const formInput = this._elements.form.querySelector('form-input');
+    // const formInput = this._elements.form.querySelector('form-input');
     formInput._elements.input.value = '';
 
     this.dispatchEvent(messageEvent);
@@ -192,6 +196,7 @@ class MessageForm extends HTMLElement {
       if (file.type.match(imageType)) {
         const img = document.createElement('img');
         const reader = new FileReader();
+        // eslint-disable-next-line func-names
         reader.onloadend = function () {
           img.src = reader.result;
         };
@@ -215,10 +220,10 @@ class MessageForm extends HTMLElement {
     }).then(result => console.log(result));
 
     const message = document.createElement('div');
-    message.className = 'message';
+    message.className = 'message from';
     let messageFromFile = document.createElement('div');
     messageFromFile = file;
-    messageFromFile.className = 'message-from preview';
+    messageFromFile.className = 'file-from preview';
     messageFromFile.id = 'img';
     message.appendChild(messageFromFile);
 
@@ -226,11 +231,13 @@ class MessageForm extends HTMLElement {
     // this._attachment.dispatchEvent(new Event('send-file'));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _onDragenter(event) {
     event.stopPropagation();
     event.preventDefault();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _onDragover(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -246,11 +253,10 @@ class MessageForm extends HTMLElement {
   _sendGeoPosition() {
     const context = this;
     navigator.geolocation.getCurrentPosition((position) => {
-      context._sendMessage(
-        `Мои координаты: широта = ${position.coords.latitude}, долгота = ${
-          position.coords.longitude
-        }`,
-      );
+      context._sendMessage(`Мои координаты: широта = ${position.coords.latitude}, долгота = ${
+        position.coords.longitude
+      }
+      `);
     });
   }
 
