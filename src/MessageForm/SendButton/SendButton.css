@@ -1,0 +1,16 @@
+.send-button {
+  order: 1;
+  display: flex;
+  width: 5vh;
+}
+
+.send-button__input {
+  visibility: hidden;
+}
+
+.send-button__image {
+  height: 5vh;
+  width: auto;
+  align-self: center;
+  cursor: pointer;
+}
