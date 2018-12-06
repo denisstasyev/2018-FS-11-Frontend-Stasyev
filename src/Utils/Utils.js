@@ -16,26 +16,25 @@ export function getTime() {
   return date.toTimeString().match(timeRegex)[0];
 }
 
-export function sendToServer(file, text) {
+export function sendToServer(text, file) {
   var formData = new FormData();
   formData.append("user", "Denis");
   formData.append("date", `${getTime()} ${new Date().toDateString()}`);
-  if (text === "") {
+  if (file !== "") {
     formData.append("file", file);
   } else {
     formData.append("text", text);
   }
-  fetch("http://127.0.0.1:8082/message", {
+
+  return fetch("http://127.0.0.1:8082/message", {
     method: "POST",
     body: formData
   })
     .then(function(response) {
-      //this_ptr.props.updateData(text, getTime(), '');
       return response;
     })
-    .catch(function(err) {
-      console.log(err);
-      console.log("no!");
+    .catch(function(error) {
+      console.log(error);
     });
 }
 

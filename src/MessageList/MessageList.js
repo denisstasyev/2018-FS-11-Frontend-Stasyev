@@ -3,7 +3,7 @@ import "./MessageList.css";
 
 import Message from "./Message/Message";
 
-import { getTime, getReadableSize, sendToServer } from "../Utils/Utils";
+import { getTime } from "../Utils/Utils";
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class MessageList extends React.Component {
         text="Кто лучший ментор?"
         time={getTime()}
         image=""
+        file=""
         isMy={true}
         key={-2}
       />
@@ -29,6 +30,7 @@ class MessageList extends React.Component {
         text="Мартин!"
         time={getTime()}
         image=""
+        file=""
         isMy={false}
         key={-1}
       />
@@ -37,8 +39,7 @@ class MessageList extends React.Component {
 
   onDragOver(event) {
     event.preventDefault();
-    var text = "";
-    var this_ptr = this;
+    var thisPointer = this;
     var files = event.dataTransfer.files;
     for (var i = 0; i < files.length; i++) {
       // eslint-disable-next-line no-loop-func
@@ -46,27 +47,35 @@ class MessageList extends React.Component {
         var reader = new FileReader();
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
-            text = reader.result;
-            this_ptr.props.updateData(this.props.id + 1, "", text);
+            thisPointer.props.updateData(
+              thisPointer.props.id + 1,
+              "",
+              reader.result,
+              file
+            );
           } else {
-            text = `${file.name}, ${getReadableSize(file.size)}`;
-            this_ptr.props.updateData(this.props.id + 1, text, "");
+            thisPointer.props.updateData(
+              thisPointer.props.id + 1,
+              "",
+              "",
+              file
+            );
           }
         };
         reader.readAsDataURL(file);
-        sendToServer(file, "");
       })(files[i]);
     }
   }
 
   render() {
-    if (this.props.text !== "" || this.props.image !== "") {
+    if (this.props.text || this.props.img || this.props.file) {
       this.state.messages.push(
         <Message
           id={this.props.id}
           text={this.props.text}
           time={getTime()}
           image={this.props.image}
+          file={this.props.file}
           isMy={this.props.isMy}
           key={this.props.id}
         />

@@ -1,8 +1,6 @@
 import React from "react";
 import "./SendButton.css";
 
-import { sendToServer } from "../../Utils/Utils";
-
 class SendButton extends React.Component {
   sendMyLocation() {
     if (!navigator.geolocation) {
@@ -14,7 +12,7 @@ class SendButton extends React.Component {
       var text = `My location: (${position.coords.latitude}, ${
         position.coords.longitude
       })`;
-      this.props.updateData(this.props.id + 1, text, "");
+      this.props.updateData(this.props.id + 1, text, "", "");
     }
     function error() {
       alert("Unable to retrieve your location!");
@@ -29,9 +27,8 @@ class SendButton extends React.Component {
       if (this.props.text === "sendMyLocation();") {
         this.sendMyLocation();
       } else {
-        this.props.updateData(this.props.id + 1, this.props.text, "");
+        this.props.updateData(this.props.id + 1, this.props.text, "", "");
       }
-      sendToServer("", this.props.text);
       this.props.updateDataMessageForm("");
       this.props.textMessageForm.cleanValue();
     }

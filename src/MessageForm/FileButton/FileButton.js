@@ -1,13 +1,10 @@
 import React from "react";
 import "./FileButton.css";
 
-import { getReadableSize, sendToServer } from "../../Utils/Utils";
-
 class FileButton extends React.Component {
   onFileSelect(event) {
     event.preventDefault();
-    var text = "";
-    var this_ptr = this;
+    var thisPointer = this;
 
     var files = event.target.files;
 
@@ -15,17 +12,26 @@ class FileButton extends React.Component {
       // eslint-disable-next-line no-loop-func
       (function(file) {
         var reader = new FileReader();
+
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
-            text = reader.result;
-            this_ptr.props.updateData(this_ptr.props.id + 1, "", text);
+            thisPointer.props.updateData(
+              thisPointer.props.id + 1,
+              "",
+              reader.result,
+              file
+            );
           } else {
-            text = `${file.name}, ${getReadableSize(file.size)}`;
-            this_ptr.props.updateData(this_ptr.props.id + 1, text, "");
+            thisPointer.props.updateData(
+              thisPointer.props.id + 1,
+              "",
+              "",
+              file
+            );
           }
         };
+
         reader.readAsDataURL(file);
-        sendToServer(file, "");
       })(files[i]);
     }
   }

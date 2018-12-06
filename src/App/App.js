@@ -11,15 +11,17 @@ class App extends React.Component {
       id: 0,
       text: "",
       image: "",
+      file: "",
       isMy: false
     };
   }
 
-  updateData(id, text, image) {
+  updateData(id, text, image, file) {
     this.setState({
       id: id,
       text: text,
       image: image,
+      file: file,
       isMy: true
     });
   }
@@ -32,6 +34,7 @@ class App extends React.Component {
           id={this.state.id}
           text={this.state.text}
           image={this.state.image}
+          file={this.state.file}
           isMy={this.state.isMy}
           updateData={this.updateData.bind(this)}
         />
