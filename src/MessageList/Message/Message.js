@@ -2,22 +2,24 @@
 import React from "react";
 import "./Message.css";
 
-import { getReadableSize, sendToServer } from "../../Utils/Utils";
+import { getReadableSize, getTime, sendToServer } from "../../Utils/Utils";
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      delivered: "not yet"
+      delivered: "not yet",
+      timeAndState: ""
     };
   }
 
   sendAndUpdate(text, file) {
+    var timeAndState = <div className="time-and-state">{getTime()}</div>;
     if (this.state.delivered === "not yet") {
       this.setState({ delivered: "pending" });
       sendToServer(text, file).then(response => {
         if (response) {
-          this.setState({ delivered: "true" });
+          this.setState({ delivered: "true", timeAndState: timeAndState });
         } else {
           this.setState({ delivered: "false" });
         }
@@ -42,6 +44,7 @@ class Message extends React.Component {
               src={this.props.image}
               alt="Sent image"
             />
+            {/*this.state.timeAndState*/}
           </div>
         );
       } else {
@@ -56,6 +59,7 @@ class Message extends React.Component {
         <div className={"text-" + (this.props.isMy ? "my" : "alien")}>
           {text}
         </div>
+        {/*this.state.timeAndState*/}
       </div>
     );
   }

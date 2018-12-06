@@ -39,7 +39,6 @@ class MessageList extends React.Component {
 
   onDragOver(event) {
     event.preventDefault();
-    var thisPointer = this;
     var files = event.dataTransfer.files;
     for (var i = 0; i < files.length; i++) {
       // eslint-disable-next-line no-loop-func
@@ -47,23 +46,13 @@ class MessageList extends React.Component {
         var reader = new FileReader();
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
-            thisPointer.props.updateData(
-              thisPointer.props.id + 1,
-              "",
-              reader.result,
-              file
-            );
+            this.props.updateData(this.props.id + 1, "", reader.result, file);
           } else {
-            thisPointer.props.updateData(
-              thisPointer.props.id + 1,
-              "",
-              "",
-              file
-            );
+            this.props.updateData(this.props.id + 1, "", "", file);
           }
-        };
+        }.bind(this);
         reader.readAsDataURL(file);
-      })(files[i]);
+      }.bind(this)(files[i]));
     }
   }
 

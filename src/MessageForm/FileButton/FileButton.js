@@ -4,7 +4,6 @@ import "./FileButton.css";
 class FileButton extends React.Component {
   onFileSelect(event) {
     event.preventDefault();
-    var thisPointer = this;
 
     var files = event.target.files;
 
@@ -12,27 +11,16 @@ class FileButton extends React.Component {
       // eslint-disable-next-line no-loop-func
       (function(file) {
         var reader = new FileReader();
-
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
-            thisPointer.props.updateData(
-              thisPointer.props.id + 1,
-              "",
-              reader.result,
-              file
-            );
+            this.props.updateData(this.props.id + 1, "", reader.result, file);
           } else {
-            thisPointer.props.updateData(
-              thisPointer.props.id + 1,
-              "",
-              "",
-              file
-            );
+            this.props.updateData(this.props.id + 1, "", "", file);
           }
-        };
+        }.bind(this);
 
         reader.readAsDataURL(file);
-      })(files[i]);
+      }.bind(this)(files[i]));
     }
   }
 

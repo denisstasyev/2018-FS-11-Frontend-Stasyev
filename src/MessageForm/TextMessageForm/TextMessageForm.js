@@ -2,13 +2,21 @@ import React from "react";
 import "./TextMessageForm.css";
 
 class TextMessageForm extends React.Component {
-  onInput(event) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
+
+  onChange(event) {
     event.preventDefault();
-    this.props.updateDataMessageForm(event.target.value);
+    this.setState({ value: event.target.value });
+    this.props.updateDataMessageForm(this.state.value);
   }
 
   cleanValue() {
-    this.refs.textMessageForm.value = "";
+    this.setState({ value: "" });
   }
 
   render() {
@@ -16,10 +24,10 @@ class TextMessageForm extends React.Component {
       <div className="text-message-form">
         <input
           className="text-message-form__input"
-          ref="textMessageForm"
+          value={this.state.value}
           type="text"
           placeholder="Введите сообщение"
-          onInput={this.onInput.bind(this)}
+          onChange={this.onChange.bind(this)}
         />
       </div>
     );
