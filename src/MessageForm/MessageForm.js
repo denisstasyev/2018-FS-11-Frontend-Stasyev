@@ -14,7 +14,7 @@ class MessageForm extends React.Component {
   }
 
   updateDataMessageForm(text) {
-    this.setState({ text: text });
+    this.setState({ text });
   }
 
   render() {

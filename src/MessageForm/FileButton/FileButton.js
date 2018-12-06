@@ -4,24 +4,20 @@ import "./FileButton.css";
 class FileButton extends React.Component {
   onFileSelect(event) {
     event.preventDefault();
+    var files = Array.from(event.target.files);
 
-    var files = event.target.files;
+    files.forEach(function(file) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        if (file.type.startsWith("image/")) {
+          this.props.updateData(this.props.id + 1, "", reader.result, file);
+        } else {
+          this.props.updateData(this.props.id + 1, "", "", file);
+        }
+      }.bind(this);
 
-    for (var i = 0; i < files.length; i++) {
-      // eslint-disable-next-line no-loop-func
-      (function(file) {
-        var reader = new FileReader();
-        reader.onload = function() {
-          if (file.type.startsWith("image/")) {
-            this.props.updateData(this.props.id + 1, "", reader.result, file);
-          } else {
-            this.props.updateData(this.props.id + 1, "", "", file);
-          }
-        }.bind(this);
-
-        reader.readAsDataURL(file);
-      }.bind(this)(files[i]));
-    }
+      reader.readAsDataURL(file);
+    }, this);
   }
 
   render() {

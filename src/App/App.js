@@ -18,10 +18,10 @@ class App extends React.Component {
 
   updateData(id, text, image, file) {
     this.setState({
-      id: id,
-      text: text,
-      image: image,
-      file: file,
+      id,
+      text,
+      image,
+      file,
       isMy: true
     });
   }

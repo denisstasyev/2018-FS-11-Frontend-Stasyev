@@ -39,21 +39,20 @@ class MessageList extends React.Component {
 
   onDragOver(event) {
     event.preventDefault();
-    var files = event.dataTransfer.files;
-    for (var i = 0; i < files.length; i++) {
-      // eslint-disable-next-line no-loop-func
-      (function(file) {
-        var reader = new FileReader();
-        reader.onload = function() {
-          if (file.type.startsWith("image/")) {
-            this.props.updateData(this.props.id + 1, "", reader.result, file);
-          } else {
-            this.props.updateData(this.props.id + 1, "", "", file);
-          }
-        }.bind(this);
-        reader.readAsDataURL(file);
-      }.bind(this)(files[i]));
-    }
+    var files = Array.from(event.dataTransfer.files);
+
+    files.forEach(function(file) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        if (file.type.startsWith("image/")) {
+          this.props.updateData(this.props.id + 1, "", reader.result, file);
+        } else {
+          this.props.updateData(this.props.id + 1, "", "", file);
+        }
+      }.bind(this);
+
+      reader.readAsDataURL(file);
+    }, this);
   }
 
   render() {

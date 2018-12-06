@@ -11,8 +11,8 @@ class TextMessageForm extends React.Component {
 
   onChange(event) {
     event.preventDefault();
+    this.props.updateDataMessageForm(event.target.value);
     this.setState({ value: event.target.value });
-    this.props.updateDataMessageForm(this.state.value);
   }
 
   cleanValue() {

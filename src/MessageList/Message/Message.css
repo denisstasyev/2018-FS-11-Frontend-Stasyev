@@ -1,6 +1,6 @@
 .message {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   max-width: 60%;
 
@@ -38,22 +38,30 @@
 }
 
 .image-preview {
-  height: 30vh;
-  width: 30vw;
+  width: 40vw;
+  margin: 0 auto;
   border-radius: 0.5em;
   background-color: transparent;
 }
 
-.text-my {
+.text--my {
   color: white;
   background-color: transparent;
 }
 
-.text-alien {
+.text--alien {
   color: black;
   background-color: transparent;
 }
 
-.time-and-state {
-  font-size: 1vh;
+.time-and-state--my {
+  color: lightblue;
+  align-self: flex-end;
+  font-size: 2vh;
+}
+
+.time-and-state--alien {
+  color: grey;
+  align-self: flex-start;
+  font-size: 2vh;
 }

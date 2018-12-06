@@ -8,18 +8,16 @@ class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      delivered: "not yet",
-      timeAndState: ""
+      delivered: "not yet"
     };
   }
 
   sendAndUpdate(text, file) {
-    var timeAndState = <div className="time-and-state">{getTime()}</div>;
     if (this.state.delivered === "not yet") {
       this.setState({ delivered: "pending" });
       sendToServer(text, file).then(response => {
         if (response) {
-          this.setState({ delivered: "true", timeAndState: timeAndState });
+          this.setState({ delivered: "true" });
         } else {
           this.setState({ delivered: "false" });
         }
@@ -44,7 +42,13 @@ class Message extends React.Component {
               src={this.props.image}
               alt="Sent image"
             />
-            {/*this.state.timeAndState*/}
+            <div
+              className={
+                "time-and-state--" + (this.props.isMy ? "my" : "alien")
+              }
+            >
+              {getTime().split(";")[0]}
+            </div>
           </div>
         );
       } else {
@@ -56,10 +60,14 @@ class Message extends React.Component {
     }
     return (
       <div className={"message " + (this.props.isMy ? "my" : "alien")}>
-        <div className={"text-" + (this.props.isMy ? "my" : "alien")}>
+        <div className={"text--" + (this.props.isMy ? "my" : "alien")}>
           {text}
         </div>
-        {/*this.state.timeAndState*/}
+        <div
+          className={"time-and-state--" + (this.props.isMy ? "my" : "alien")}
+        >
+          {getTime().split(";")[0]}
+        </div>
       </div>
     );
   }
