@@ -1,47 +1,31 @@
 {
-  "name": "messanger",
-  "version": "0.0.1",
-  "description": "technotrack project",
-  "main": "index.js",
-  "scripts": {
-    "say-hello": "echo 'Hello, world!'",
-    "lint": "./node_modules/eslint/bin/eslint.js ./src/",
-    "clean": "rm -r dist && mkdir dist",
-    "build": "npm run clean && webpack",
-    "show": "google-chrome ./dist/create/index.html",
-    "run": "google-chrome ./dist/create/index.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev.git"
-  },
-  "keywords": [
-    "frontend"
-  ],
-  "author": "Denis Stasyev",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev/issues"
-  },
-  "homepage": "https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev#readme",
+  "name": "react-messenger",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "npm": "^6.4.1"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
   },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
-    "@babel/preset-env": "^7.1.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "express": "^4.16.4",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "express-fileupload": "^1.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.20.2"
+    "prettier": "^1.15.2"
   }
 }

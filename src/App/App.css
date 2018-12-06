@@ -1,0 +1,7 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 97vh;
+  width: calc(100% - 2px);
+  /* height: calc(99%); */
+}
