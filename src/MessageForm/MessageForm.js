@@ -20,7 +20,7 @@ class MessageForm extends React.Component {
   render() {
     return (
       <div className="message-form">
-        <FileButton updateData={this.props.updateData} />
+        <FileButton id={this.props.id} updateData={this.props.updateData} />
 
         <TextMessageForm
           text={this.state.text}
@@ -29,6 +29,7 @@ class MessageForm extends React.Component {
         />
 
         <SendButton
+          id={this.props.id}
           text={this.state.text}
           textMessageForm={this.refs.textMessageForm}
           updateData={this.props.updateData}

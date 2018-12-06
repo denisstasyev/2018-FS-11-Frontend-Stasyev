@@ -15,24 +15,22 @@ class MessageList extends React.Component {
     // Test data
     this.state.messages.push(
       <Message
+        id={-2}
         text="Кто лучший ментор?"
         time={getTime()}
         image=""
         isMy={true}
-        key={
-          this.props.text + this.props.time + this.props.image + Math.random()
-        }
+        key={-2}
       />
     );
     this.state.messages.push(
       <Message
+        id={-1}
         text="Мартин!"
         time={getTime()}
         image=""
         isMy={false}
-        key={
-          this.props.text + this.props.time + this.props.image + Math.random()
-        }
+        key={-1}
       />
     );
   }
@@ -49,10 +47,10 @@ class MessageList extends React.Component {
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
             text = reader.result;
-            this_ptr.props.updateData("", getTime(), text);
+            this_ptr.props.updateData(this.props.id + 1, "", text);
           } else {
             text = `${file.name}, ${getReadableSize(file.size)}`;
-            this_ptr.props.updateData(text, getTime(), "");
+            this_ptr.props.updateData(this.props.id + 1, text, "");
           }
         };
         reader.readAsDataURL(file);
@@ -65,13 +63,12 @@ class MessageList extends React.Component {
     if (this.props.text !== "" || this.props.image !== "") {
       this.state.messages.push(
         <Message
+          id={this.props.id}
           text={this.props.text}
-          time={this.props.time}
+          time={getTime()}
           image={this.props.image}
           isMy={this.props.isMy}
-          key={
-            this.props.text + this.props.time + this.props.image + Math.random()
-          }
+          key={this.props.id}
         />
       );
     }

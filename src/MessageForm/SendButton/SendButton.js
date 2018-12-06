@@ -1,7 +1,7 @@
 import React from "react";
 import "./SendButton.css";
 
-import { getTime, sendToServer } from "../../Utils/Utils";
+import { sendToServer } from "../../Utils/Utils";
 
 class SendButton extends React.Component {
   sendMyLocation() {
@@ -14,7 +14,7 @@ class SendButton extends React.Component {
       var text = `My location: (${position.coords.latitude}, ${
         position.coords.longitude
       })`;
-      this.props.updateData(text, getTime(), "");
+      this.props.updateData(this.props.id + 1, text, "");
     }
     function error() {
       alert("Unable to retrieve your location!");
@@ -29,7 +29,7 @@ class SendButton extends React.Component {
       if (this.props.text === "sendMyLocation();") {
         this.sendMyLocation();
       } else {
-        this.props.updateData(this.props.text, getTime(), "");
+        this.props.updateData(this.props.id + 1, this.props.text, "");
       }
       sendToServer("", this.props.text);
       this.props.updateDataMessageForm("");

@@ -8,17 +8,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       text: "",
-      time: "",
       image: "",
       isMy: false
     };
   }
 
-  updateData(text, time, image) {
+  updateData(id, text, image) {
     this.setState({
+      id: id,
       text: text,
-      time: time,
       image: image,
       isMy: true
     });
@@ -29,13 +29,16 @@ class App extends React.Component {
       <div className="app">
         {/* <Title /> */}
         <MessageList
+          id={this.state.id}
           text={this.state.text}
-          time={this.state.time}
           image={this.state.image}
           isMy={this.state.isMy}
           updateData={this.updateData.bind(this)}
         />
-        <MessageForm updateData={this.updateData.bind(this)} />
+        <MessageForm
+          id={this.state.id}
+          updateData={this.updateData.bind(this)}
+        />
       </div>
     );
   }

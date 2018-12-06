@@ -1,7 +1,7 @@
 import React from "react";
 import "./FileButton.css";
 
-import { getTime, getReadableSize, sendToServer } from "../../Utils/Utils";
+import { getReadableSize, sendToServer } from "../../Utils/Utils";
 
 class FileButton extends React.Component {
   onFileSelect(event) {
@@ -18,10 +18,10 @@ class FileButton extends React.Component {
         reader.onload = function() {
           if (file.type.startsWith("image/")) {
             text = reader.result;
-            this_ptr.props.updateData("", getTime(), text);
+            this_ptr.props.updateData(this_ptr.props.id + 1, "", text);
           } else {
             text = `${file.name}, ${getReadableSize(file.size)}`;
-            this_ptr.props.updateData(text, getTime(), "");
+            this_ptr.props.updateData(this_ptr.props.id + 1, text, "");
           }
         };
         reader.readAsDataURL(file);
