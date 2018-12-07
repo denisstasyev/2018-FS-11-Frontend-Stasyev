@@ -1,7 +1,7 @@
 import React from "react";
 import "./FileButton.css";
 
-import ImageSignAdd from "../../../static/MessageForm/FileButton/sign-add.svg";
+import ImageFileButton from "../../../../static/Chat/MessageForm/FileButton/paperclip.svg";
 
 class FileButton extends React.Component {
   onFileSelect(event) {
@@ -28,7 +28,7 @@ class FileButton extends React.Component {
         <label htmlFor="file-button__input">
           <img
             className="file-button__image"
-            src={ImageSignAdd}
+            src={ImageFileButton}
             alt="File button"
           />
         </label>

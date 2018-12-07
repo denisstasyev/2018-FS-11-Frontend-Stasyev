@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  padding: 7vh 7vh;
+  box-sizing: border-box;
+  border-radius: 2vh;
+  background-color: #000000;
+}
+
+.home-button {
+  height: 5vh;
+  width: auto;
+}

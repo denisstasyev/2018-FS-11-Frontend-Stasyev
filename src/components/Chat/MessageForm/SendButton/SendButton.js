@@ -1,7 +1,7 @@
 import React from "react";
 import "./SendButton.css";
 
-import ImageSignUp from "../../../static/MessageForm/SendButton/sign-up.svg";
+import ImageSendButton from "../../../../static/Chat/MessageForm/SendButton/paper-plane.svg";
 
 class SendButton extends React.Component {
   sendMyLocation() {
@@ -42,7 +42,7 @@ class SendButton extends React.Component {
         <label htmlFor="send-button__input">
           <img
             className="send-button__image"
-            src={ImageSignUp}
+            src={ImageSendButton}
             alt="Send button"
           />
         </label>

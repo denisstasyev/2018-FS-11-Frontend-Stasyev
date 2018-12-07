@@ -3,7 +3,7 @@ import "./MessageList.css";
 
 import Message from "./Message/Message";
 
-import { getTime } from "../../utils/utils";
+import { getTime } from "../../../utils/utils";
 
 class MessageList extends React.Component {
   constructor(props) {

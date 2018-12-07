@@ -2,7 +2,11 @@
 import React from "react";
 import "./Message.css";
 
-import { getReadableSize, getTime, sendToServer } from "../../../utils/utils";
+import {
+  getReadableSize,
+  getTime,
+  sendToServer
+} from "../../../../utils/utils";
 
 class Message extends React.Component {
   constructor(props) {
