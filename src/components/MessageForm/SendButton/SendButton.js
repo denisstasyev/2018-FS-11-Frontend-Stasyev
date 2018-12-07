@@ -1,6 +1,8 @@
 import React from "react";
 import "./SendButton.css";
 
+import ImageSignUp from "../../../static/MessageForm/SendButton/sign-up.svg";
+
 class SendButton extends React.Component {
   sendMyLocation() {
     if (!navigator.geolocation) {
@@ -40,7 +42,7 @@ class SendButton extends React.Component {
         <label htmlFor="send-button__input">
           <img
             className="send-button__image"
-            src={require("../../static/MessageForm/SendButton/sign-up.svg")}
+            src={ImageSignUp}
             alt="Send button"
           />
         </label>
