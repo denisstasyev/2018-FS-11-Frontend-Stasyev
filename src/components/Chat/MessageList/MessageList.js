@@ -70,7 +70,7 @@ class MessageList extends React.Component {
       );
     }
     return (
-      <div
+      <ul
         className="message-list"
         onDrop={this.onDragOver.bind(this)}
         onDragEnter={this.onDragOver.bind(this)}
@@ -78,7 +78,7 @@ class MessageList extends React.Component {
         onDragLeave={this.onDragOver.bind(this)}
       >
         {this.state.messages}
-      </div>
+      </ul>
     );
   }
 }

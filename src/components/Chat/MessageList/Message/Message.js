@@ -36,7 +36,7 @@ class Message extends React.Component {
       this.sendAndUpdate("", file);
       if (this.props.image) {
         return (
-          <div className={"message " + (this.props.isMy ? "my" : "alien")}>
+          <li className={"message " + (this.props.isMy ? "my" : "alien")}>
             <img
               className={
                 "message__" +
@@ -53,7 +53,7 @@ class Message extends React.Component {
             >
               {getTime().split(";")[0]}
             </div>
-          </div>
+          </li>
         );
       } else {
         text = `${file.name}, ${file.type}, ${getReadableSize(file.size)}`;
@@ -63,7 +63,7 @@ class Message extends React.Component {
       this.sendAndUpdate(text, "");
     }
     return (
-      <div className={"message " + (this.props.isMy ? "my" : "alien")}>
+      <li className={"message " + (this.props.isMy ? "my" : "alien")}>
         <div className={"text--" + (this.props.isMy ? "my" : "alien")}>
           {text}
         </div>
@@ -72,7 +72,7 @@ class Message extends React.Component {
         >
           {getTime().split(";")[0]}
         </div>
-      </div>
+      </li>
     );
   }
 }
