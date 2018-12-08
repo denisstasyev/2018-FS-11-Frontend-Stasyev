@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  padding: 2vh 2vh;
+  box-sizing: border-box;
+  border-radius: 2vh;
+  background: lightgrey;
+  border-radius: 2vh;
+  border: 1px solid rgba(25, 25, 25, 0.32);
+}
+
+.home-button {
+  /*height: 5vh;*/
+  width: auto;
+}
