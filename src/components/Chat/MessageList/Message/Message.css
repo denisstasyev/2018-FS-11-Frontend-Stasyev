@@ -5,7 +5,7 @@
   max-width: 60%;
 
   color: rgba(25, 25, 25, 0.32);
-  font-size: 20px;
+  font-size: 3vh;
 
   border-radius: 2vh;
   border: 1px solid;
@@ -57,11 +57,11 @@
 .time-and-state--my {
   color: lightblue;
   align-self: flex-end;
-  font-size: 20px;
+  font-size: 2vh;
 }
 
 .time-and-state--alien {
   color: grey;
   align-self: flex-start;
-  font-size: 20px;
+  font-size: 2vh;
 }

@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <header className="header">
         <button className="home-button">
-          <Link to="/">Back</Link>
+          <Link to="/">Home</Link>
         </button>
       </header>
     );
