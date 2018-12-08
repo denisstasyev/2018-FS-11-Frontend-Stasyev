@@ -1,11 +1,11 @@
 .message {
-  display: flex;
+  display: block;
   flex-direction: column;
 
   max-width: 60%;
 
   color: rgba(25, 25, 25, 0.32);
-  font-size: 3vh;
+  font-size: 20px;
 
   border-radius: 2vh;
   border: 1px solid;
@@ -57,11 +57,11 @@
 .time-and-state--my {
   color: lightblue;
   align-self: flex-end;
-  font-size: 2vh;
+  font-size: 20px;
 }
 
 .time-and-state--alien {
   color: grey;
   align-self: flex-start;
-  font-size: 2vh;
+  font-size: 20px;
 }
