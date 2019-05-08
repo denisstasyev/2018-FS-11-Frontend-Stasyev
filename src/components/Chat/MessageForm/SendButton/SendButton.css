@@ -1,16 +1,33 @@
 .send-button {
-  order: 1;
-  display: flex;
-  width: 5vh;
-}
+  flex-shrink: 0;
 
-.send-button__input {
-  visibility: hidden;
-}
+  height: 50px;
+  width: 50px;
 
-.send-button__image {
-  height: 5vh;
-  width: auto;
-  align-self: center;
+  margin: 10px;
+
+  background: url("../../../../static/Chat/MessageForm/SendButton/paper-plane.svg");
+  background-size: cover;
+
+  border: 0;
+  outline: none;
+
   cursor: pointer;
+
+  transition: filter 0.1s linear;
+}
+
+.hidden {
+  /* visibility: hidden; */
+  display: none;
+}
+
+.send-button:hover {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+}
+
+.send-button:active {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
 }

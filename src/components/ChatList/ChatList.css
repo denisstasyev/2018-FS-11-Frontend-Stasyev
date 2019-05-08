@@ -1,9 +1,7 @@
 .chat-list {
-  position: relative;
   margin: 0;
   padding: 0;
-
-  width: 100%;
+  list-style: none;
 
   background-color: transparent;
 
@@ -11,15 +9,19 @@
   flex-direction: column;
 }
 
-.chat {
-  font-size: 3vh;
+.chat-list__chat {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
 
-  margin: 1vh 0 0 0;
-  padding: 1vh 1vh 1vh 1vh;
+  padding: 10px;
 
   box-sizing: border-box;
 
-  background: lightgrey;
-  border-radius: 2vh;
-  border: 1px solid rgba(25, 25, 25, 0.32);
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.chat-list__chat:hover {
+  background: rgba(0, 0, 0, 0.2);
 }

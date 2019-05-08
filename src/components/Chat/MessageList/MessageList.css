@@ -1,20 +1,19 @@
 .message-list {
   display: flex;
   flex-direction: column;
+  /* BUG IN BROWSERS */
+  /* https://stackoverflow.com/questions/36130760/use-justify-content-flex-end-and-to-have-vertical-scrollbar */
+  /* justify-content: flex-end; */
 
-  margin: 0;
-  padding: 0;
-
-  /* position: absolute;
-  top: 0px;
-  left: 0px; */
-
-  /* height: calc(100% - 5vh); */
-  width: 100%;
-  height: 80vh;
+  height: 100vh;
 
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
-  background-color: transparent;
+  background-color: rgb(182, 182, 182);
+}
+
+/* BECAUSE OF BUG */
+.message-list > :first-child {
+  margin-top: auto !important;
 }

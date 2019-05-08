@@ -1,14 +1,21 @@
 .header {
-  width: 100%;
-  padding: 2vh 2vh;
+  padding: 10px 10px;
+  background: grey;
+
   box-sizing: border-box;
-  border-radius: 2vh;
-  background: lightgrey;
-  border-radius: 2vh;
-  border: 1px solid rgba(25, 25, 25, 0.32);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .home-button {
-  /*height: 5vh;*/
-  width: auto;
+  height: 50px;
+  width: 50px;
+  
+  background: url("../../static/Header/home-icon.svg");
+  background-size: cover;
+}
+
+.login-button {
 }

@@ -1,0 +1,32 @@
+.location-button {
+  display: flex;
+
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+
+  background: url("../../../../../static/Chat/MessageForm/LocationButton/map-marker.svg");
+  background-size: cover;
+
+  border: 0;
+  outline: none;
+
+  cursor: pointer;
+
+  transition: filter 0.1s linear;
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.location-button:hover {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+  height: 50px;
+  width: 50px;
+}
+
+.location-button:active {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
+  height: 50px;
+  width: 50px;
+}

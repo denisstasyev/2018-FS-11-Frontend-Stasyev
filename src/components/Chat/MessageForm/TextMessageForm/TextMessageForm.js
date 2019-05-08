@@ -1,37 +1,59 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./TextMessageForm.css";
 
-class TextMessageForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ""
-    };
-  }
+import * as actionTypes from "../../../../store/actionTypes/actionTypes";
 
+class TextMessageForm extends React.Component {
   onChange(event) {
     event.preventDefault();
-    this.props.updateDataMessageForm(event.target.value);
-    this.setState({ value: event.target.value });
+    this.props.handleRewriteText(event.target.value);
   }
 
-  cleanValue() {
-    this.setState({ value: "" });
+  onSubmit(event) {
+    event.preventDefault();
+    if (this.props.text.length > 0) {
+      this.props.handleSendText(this.props.text);
+    }
   }
 
   render() {
     return (
-      <div className="text-message-form">
+      <form className="text-message-form" onSubmit={this.onSubmit.bind(this)}>
         <input
           className="text-message-form__input"
-          value={this.state.value}
+          value={this.props.text}
           type="text"
-          placeholder="Введите сообщение"
+          placeholder="Enter your message"
           onChange={this.onChange.bind(this)}
         />
-      </div>
+      </form>
     );
   }
 }
 
-export default TextMessageForm;
+const mapStateToProps = state => {
+  return {
+    text: state.messageFormReducer.text
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleRewriteText: text =>
+      dispatch({
+        type: actionTypes.REWRITE_TEXT,
+        text
+      }),
+    handleSendText: text =>
+      dispatch({
+        type: actionTypes.SEND_TEXT,
+        text
+      })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TextMessageForm);

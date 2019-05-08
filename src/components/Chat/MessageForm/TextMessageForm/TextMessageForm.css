@@ -1,17 +1,18 @@
 .text-message-form {
-  order: 0;
   display: flex;
-  flex: auto;
 
-  margin: 0 1vh 0 1vh;
+  flex-grow: 1;
+  min-width: 0;
 
   background-color: transparent;
 }
 
 .text-message-form__input {
-  font-size: 3vh;
-  display: flex;
+  font-size: 20px;
+
   flex: auto;
+  min-width: 0;
+
   border: none;
   outline: none;
   background-color: transparent;
