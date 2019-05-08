@@ -21,7 +21,7 @@ class ReactionButton extends React.Component {
         onClick={this.updateText.bind(this)}
         src={require("../../../../../static/Chat/MessageForm/Reactions/" +
           this.props.name +
-          ".png?sprite")}
+          ".png?sprite=sprite-reactions")}
         alt={"Reaction " + this.props.name}
       />
     );

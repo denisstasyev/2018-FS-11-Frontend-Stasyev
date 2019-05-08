@@ -6,8 +6,8 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <Link className="home-button" to="/"/>
-        <button className="auth-button">//////////////////////////
+        <Link className="home-button" to="/" />
+        <button className="auth-button">
           <Link to="/login">Login</Link>
         </button>
       </header>

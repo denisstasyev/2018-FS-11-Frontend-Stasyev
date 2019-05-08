@@ -40,7 +40,7 @@ class Message extends React.Component {
     reactionTypeList.forEach(reaction => {
       var src = require("../../../../static/Chat/MessageForm/Reactions/" +
         reaction.name +
-        ".png?sprite");
+        ".png?sprite=sprite-reactions");
       if (text === reaction.text) {
         result =
           '<img src="' +
