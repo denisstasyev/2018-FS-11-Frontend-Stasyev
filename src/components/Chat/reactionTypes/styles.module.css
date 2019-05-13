@@ -1,0 +1,59 @@
+.alien {
+  background-image: url("static/Chat/reactionTypes/alien.png?sprite");
+}
+
+.alien-monster {
+  background-image: url("static/Chat/reactionTypes/alien-monster.png?sprite");
+}
+
+.angry-face {
+  background-image: url("static/Chat/reactionTypes/angry-face.png?sprite");
+}
+
+.anguished-face {
+  background-image: url("static/Chat/reactionTypes/anguished-face.png?sprite");
+}
+
+.anxious-face-with-sweat {
+  background-image: url("static/Chat/reactionTypes/anxious-face-with-sweat.png?sprite");
+}
+
+.astonished-face {
+  background-image: url("static/Chat/reactionTypes/astonished-face.png?sprite");
+}
+
+.beaming-face-with-smiling-eyes {
+  background-image: url("static/Chat/reactionTypes/beaming-face-with-smiling-eyes.png?sprite");
+}
+
+.cold-face {
+  background-image: url("static/Chat/reactionTypes/cold-face.png?sprite");
+}
+
+.confounded-face {
+  background-image: url("static/Chat/reactionTypes/confounded-face.png?sprite");
+}
+
+.confused-face {
+  background-image: url("static/Chat/reactionTypes/confused-face.png?sprite");
+}
+
+.cowboy-hat-face {
+  background-image: url("static/Chat/reactionTypes/cowboy-hat-face.png?sprite");
+}
+
+.crying-face {
+  background-image: url("static/Chat/reactionTypes/crying-face.png?sprite");
+}
+
+.disappointed-face {
+  background-image: url("static/Chat/reactionTypes/disappointed-face.png?sprite");
+}
+
+.dizzy-face {
+  background-image: url("static/Chat/reactionTypes/dizzy-face.png?sprite");
+}
+
+.downcast-face-with-sweat {
+  background-image: url("static/Chat/reactionTypes/downcast-face-with-sweat.png?sprite");
+}

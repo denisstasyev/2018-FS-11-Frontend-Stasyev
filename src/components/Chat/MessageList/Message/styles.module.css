@@ -1,0 +1,168 @@
+.message {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 60%;
+
+  font-size: var(--middle-font-size);
+
+  margin: 0px 10px 10px 10px;
+  padding: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+
+  transition: font-size 0.1s linear;
+}
+
+.message:hover {
+  font-size: calc(2 * var(--middle-font-size));
+}
+
+.message--my {
+  composes: message;
+  align-self: flex-end;
+  border-radius: 1em 1em 0.3em 1em;
+  background: #08f;
+}
+
+.message--alien {
+  composes: message;
+  align-self: flex-start;
+  border-radius: 1em 1em 1em 0.3em;
+  background: #ddd;
+}
+
+.image-preview {
+  max-width: 250px;
+  border-radius: 0.7em 0.7em 0em 0em;
+  background-color: transparent;
+
+  transition: max-width 0.1s linear;
+}
+
+.image-preview:hover {
+  max-width: 400px;
+}
+
+.text--my {
+  color: white;
+  background-color: transparent;
+}
+
+.text--alien {
+  color: black;
+  background-color: transparent;
+}
+
+.extras {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-left: 5px;
+  padding-right: 5px;
+
+  font-size: var(--small-font-size);
+}
+
+.extras--my {
+  composes: extras;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.extras--alien {
+  composes: extras;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.size--my {
+  color: lightblue;
+}
+
+.size--alien {
+  color: grey;
+}
+
+.send-time--my {
+  color: lightblue;
+  margin-left: 10px;
+}
+
+.send-time--alien {
+  color: grey;
+  margin-right: 10px;
+}
+
+.reaction-preview {
+  background-size: cover;
+  /* max-width: 100%; */
+  height: 100%;
+  width: 100%;
+}
+
+.reaction-inline {
+  background-size: cover;
+  height: 1em;
+  width: 1em;
+}
+
+.alien {
+  composes: alien from "../../reactionTypes/styles.module.css";
+}
+
+.alien-monster {
+  composes: alien-monster from "../../reactionTypes/styles.module.css";
+}
+
+.angry-face {
+  composes: angry-face from "../../reactionTypes/styles.module.css";
+}
+
+.anguished-face {
+  composes: anguished-face from "../../reactionTypes/styles.module.css";
+}
+
+.anxious-face-with-sweat {
+  composes: anxious-face-with-sweat from "../../reactionTypes/styles.module.css";
+}
+
+.astonished-face {
+  composes: astonished-face from "../../reactionTypes/styles.module.css";
+}
+
+.beaming-face-with-smiling-eyes {
+  composes: beaming-face-with-smiling-eyes from "../../reactionTypes/styles.module.css";
+}
+
+.cold-face {
+  composes: cold-face from "../../reactionTypes/styles.module.css";
+}
+
+.confounded-face {
+  composes: confounded-face from "../../reactionTypes/styles.module.css";
+}
+
+.confused-face {
+  composes: confused-face from "../../reactionTypes/styles.module.css";
+}
+
+.cowboy-hat-face {
+  composes: cowboy-hat-face from "../../reactionTypes/styles.module.css";
+}
+
+.crying-face {
+  composes: crying-face from "../../reactionTypes/styles.module.css";
+}
+
+.disappointed-face {
+  composes: disappointed-face from "../../reactionTypes/styles.module.css";
+}
+
+.dizzy-face {
+  composes: dizzy-face from "../../reactionTypes/styles.module.css";
+}
+
+.downcast-face-with-sweat {
+  composes: downcast-face-with-sweat from "../../reactionTypes/styles.module.css";
+}

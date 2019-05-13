@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./LocationButton.css";
+import styles from "./styles.module.css";
 
-import * as actionTypes from "../../../../../store/actionTypes/actionTypes";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class LocationButton extends React.Component {
   sendMyLocation() {
@@ -12,7 +12,7 @@ class LocationButton extends React.Component {
     }
 
     function success(position) {
-      var text = `My location: (${position.coords.latitude}, ${
+      let text = `My location: (${position.coords.latitude}, ${
         position.coords.longitude
       })`;
       this.props.handleTextSelect(text);
@@ -27,18 +27,16 @@ class LocationButton extends React.Component {
   render() {
     return (
       <button
-        className="location-button"
+        className={styles["location-button"]}
         onClick={this.sendMyLocation.bind(this)}
       />
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleTextSelect: text => dispatch({ type: actionTypes.SEND_TEXT, text })
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleTextSelect: text => dispatch({ type: actionTypes.SEND_TEXT, text })
+});
 
 export default connect(
   null,

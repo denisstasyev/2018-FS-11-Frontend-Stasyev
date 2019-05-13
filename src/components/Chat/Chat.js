@@ -1,14 +1,16 @@
 import React from "react";
-import "./Chat.css";
+import styles from "./styles.module.css";
 
-import MessageList from "./MessageList/MessageList";
-import MessageForm from "./MessageForm/MessageForm";
+import { MessageList } from "./MessageList";
+import { ExtrasPanel } from "./ExtrasPanel";
+import { MessageForm } from "./MessageForm";
 
 class Chat extends React.Component {
   render() {
     return (
-      <div className="chat">
+      <div className={styles["chat"]}>
         <MessageList />
+        <ExtrasPanel />
         <MessageForm />
       </div>
     );

@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./TextMessageForm.css";
+import styles from "./styles.module.css";
 
-import * as actionTypes from "../../../../store/actionTypes/actionTypes";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class TextMessageForm extends React.Component {
   onChange(event) {
@@ -19,9 +19,12 @@ class TextMessageForm extends React.Component {
 
   render() {
     return (
-      <form className="text-message-form" onSubmit={this.onSubmit.bind(this)}>
+      <form
+        className={styles["text-message-form"]}
+        onSubmit={this.onSubmit.bind(this)}
+      >
         <input
-          className="text-message-form__input"
+          className={styles["text-message-form__input"]}
           value={this.props.text}
           type="text"
           placeholder="Enter your message"
@@ -32,26 +35,22 @@ class TextMessageForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    text: state.messageFormReducer.text
-  };
-};
+const mapStateToProps = state => ({
+  text: state.messageFormReducer.text
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleRewriteText: text =>
-      dispatch({
-        type: actionTypes.REWRITE_TEXT,
-        text
-      }),
-    handleSendText: text =>
-      dispatch({
-        type: actionTypes.SEND_TEXT,
-        text
-      })
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleRewriteText: text =>
+    dispatch({
+      type: actionTypes.REWRITE_TEXT,
+      text
+    }),
+  handleSendText: text =>
+    dispatch({
+      type: actionTypes.SEND_TEXT,
+      text
+    })
+});
 
 export default connect(
   mapStateToProps,

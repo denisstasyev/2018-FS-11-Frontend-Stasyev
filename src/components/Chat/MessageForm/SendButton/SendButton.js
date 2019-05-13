@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./SendButton.css";
+import styles from "./styles.module.css";
 
-import * as actionTypes from "../../../../store/actionTypes/actionTypes";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class SendButton extends React.Component {
   onSubmit(event) {
@@ -14,7 +14,7 @@ class SendButton extends React.Component {
     return (
       <button
         className={
-          "send-button " + (this.props.text.length > 0 ? "" : "hidden")
+          this.props.text.length > 0 ? styles["send-button"] : styles["hidden"]
         }
         onClick={this.onSubmit.bind(this)}
       />
@@ -22,21 +22,17 @@ class SendButton extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    text: state.messageFormReducer.text
-  };
-};
+const mapStateToProps = state => ({
+  text: state.messageFormReducer.text
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleSubmit: text =>
-      dispatch({
-        type: actionTypes.SEND_TEXT,
-        text
-      })
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: text =>
+    dispatch({
+      type: actionTypes.SEND_TEXT,
+      text
+    })
+});
 
 export default connect(
   mapStateToProps,

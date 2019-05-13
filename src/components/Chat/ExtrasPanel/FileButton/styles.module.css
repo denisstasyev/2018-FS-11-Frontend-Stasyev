@@ -11,8 +11,8 @@
 }
 
 .file-button__image {
-  height: 30px;
-  width: 30px;
+  height: var(--small-icon-height);
+  width: var(--small-icon-width);
   cursor: pointer;
 
   transition: filter 0.1s linear;
@@ -22,13 +22,13 @@
 .file-button__image:hover {
   -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
   filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
-  height: 50px;
-  width: 50px;
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
 }
 
 .file-button_image:active {
   -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
   filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
-  height: 50px;
-  width: 50px;
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
 }

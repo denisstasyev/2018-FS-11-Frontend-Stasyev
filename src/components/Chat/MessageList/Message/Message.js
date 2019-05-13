@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
-import "./Message.css";
-// import "../../ReactionTypes/ReactionTypes.css";
+import styles from "./styles.module.css";
 
-import { getReadableSize, sendToServer } from "../../../../utils/utils";
+import { getReadableSize, sendToServer } from "utils/utils";
 
-import reactionTypeList from "../../ReactionTypes";
+import reactionTypeList from "../../reactionTypes";
 
 const imagePattern = /^image\.*/;
 
@@ -30,112 +29,101 @@ class Message extends React.Component {
   //   }
   // }
 
-  preventXSSAttack(text) {
-    //TODO: FIX XSS ATTACK!
-    return text;
-  }
+  sanitize = string => {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#x27;",
+      "`": "&grave;",
+      "/": "&#x2F;"
+    };
+    const reg = /[&<>"'`/]/gi;
+    return string.replace(reg, match => map[match]);
+  };
+
+  preventXSSAttack = text => {
+    return this.sanitize(text);
+  };
 
   handleReaction(text) {
     let result = text;
+    result = this.preventXSSAttack(result);
     reactionTypeList.forEach(reaction => {
-      var src = require("../../../../static/Chat/MessageForm/Reactions/" +
-        reaction.name +
-        ".png?sprite=sprite-reactions");
       if (text === reaction.text) {
-        result =
-          '<img src="' +
-          src +
-          '" style="max-width:100%;" alt="Reaction template" />'.replace(
-            "template",
-            reaction.name
-          );
+        result = `<span className="${[
+          styles["reaction-preview"],
+          styles[reaction.name]
+        ].join(" ")}" />`;
       }
       while (result.indexOf(reaction.text) !== -1) {
         result = result.replace(
           reaction.text,
-          '<img src="' +
-            src +
-            '" style="height: 1em; width: 1em" alt="Reaction template" />'.replace(
-              "template",
-              reaction.name
-            )
+          `<span className="${[
+            styles["reaction-inline"],
+            styles[reaction.name]
+          ].join(" ")}" />`
         );
       }
     });
-    result = this.preventXSSAttack(result);
     return { __html: result };
   }
 
   render() {
-    if (this.props.file) {
-      // this.sendAndUpdate("", file);
-      if (this.props.file.type.match(imagePattern)) {
-        return (
-          <div className={"message " + (this.props.isMy ? "my" : "alien")}>
+    return (
+      <div
+        className={
+          this.props.isMy ? styles["message--my"] : styles["message--alien"]
+        }
+      >
+        {this.props.file ? (
+          this.props.file.type.match(imagePattern) ? (
             <img
-              className={
-                "message__" +
-                (this.props.isMy ? "my" : "alien") +
-                " image-preview"
-              }
+              className={styles["image-preview"]}
               src={URL.createObjectURL(this.props.file)}
-              alt="Sent image"
+              alt="Image preview"
             />
-            <div className="extras">
-              <div
-                className={
-                  "time-and-state--" + (this.props.isMy ? "my" : "alien")
-                }
-              >
-                {this.props.time}
-              </div>
-              <div className={"size--" + (this.props.isMy ? "my" : "alien")}>
-                {getReadableSize(this.props.file.size)}
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div className={"message " + (this.props.isMy ? "my" : "alien")}>
+          ) : (
             <a href={URL.createObjectURL(this.props.file)}>
               {this.props.file.name}
             </a>
-            <div className="extras">
-              <div
-                className={
-                  "time-and-state--" + (this.props.isMy ? "my" : "alien")
-                }
-              >
-                {this.props.time}
-              </div>
-              <div className={"size--" + (this.props.isMy ? "my" : "alien")}>
-                {getReadableSize(this.props.file.size)}
-              </div>
-            </div>
-          </div>
-        );
-      }
-    } else {
-      // this.sendAndUpdate(text, "");
-      return (
-        <div className={"message " + (this.props.isMy ? "my" : "alien")}>
+          )
+        ) : (
           <div
-            className={"text--" + (this.props.isMy ? "my" : "alien")}
+            className={
+              this.props.isMy ? styles["text--my"] : styles["text--alien"]
+            }
             dangerouslySetInnerHTML={this.handleReaction(this.props.text)}
           />
-          <div className="extras">
+        )}
+
+        <div
+          className={
+            this.props.isMy ? styles["extras--my"] : styles["extras-alien"]
+          }
+        >
+          <div
+            className={
+              this.props.isMy
+                ? styles["send-time--my"]
+                : styles["send-time--alien"]
+            }
+          >
+            {this.props.time}
+          </div>
+          {this.props.file ? (
             <div
               className={
-                "time-and-state--" + (this.props.isMy ? "my" : "alien")
+                this.props.isMy ? styles["size--my"] : styles["size--alien"]
               }
             >
-              {this.props.time}
+              {getReadableSize(this.props.file.size)}
             </div>
-          </div>
+          ) : null}
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 

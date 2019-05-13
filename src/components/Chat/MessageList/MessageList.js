@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./MessageList.css";
+import styles from "./styles.module.css";
 
-import Message from "./Message/Message";
+import { Message } from "./Message";
 
-import * as actionTypes from "../../../store/actionTypes/actionTypes";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class MessageList extends React.Component {
   handleDragAndDrop(event) {
     event.preventDefault();
-    var files = Array.from(event.dataTransfer.files);
+    let files = Array.from(event.dataTransfer.files);
 
     files.forEach(function(file) {
-      var reader = new FileReader();
+      let reader = new FileReader();
       reader.onload = function() {
         this.props.handleFileSelect(file);
       }.bind(this);
@@ -24,17 +24,16 @@ class MessageList extends React.Component {
   render() {
     return (
       <div
-        // id="message-list"
-        className="message-list"
+        className={styles["message-list"]}
         onDrop={this.handleDragAndDrop.bind(this)}
         onDragEnter={this.handleDragAndDrop.bind(this)}
         onDragOver={this.handleDragAndDrop.bind(this)}
         onDragLeave={this.handleDragAndDrop.bind(this)}
       >
-        {this.props.messageList.map(message => {
+        {this.props.messageList.map((message, idx) => {
           return (
             <Message
-              // id={"message-" + message.id}
+              key={idx}
               text={message.text}
               file={message.file}
               isMy={message.isMy}
@@ -47,21 +46,17 @@ class MessageList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    messageList: state.messageListReducer.messageList
-  };
-};
+const mapStateToProps = state => ({
+  messageList: state.messageListReducer.messageList
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleFileSelect: file =>
-      dispatch({
-        type: actionTypes.SEND_FILE,
-        file
-      })
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleFileSelect: file =>
+    dispatch({
+      type: actionTypes.SEND_FILE,
+      file
+    })
+});
 
 export default connect(
   mapStateToProps,

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./FileButton.css";
+import styles from "./styles.module.css";
 
-import * as actionTypes from "../../../../../store/actionTypes/actionTypes";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
-import ImageFileButton from "../../../../../static/Chat/MessageForm/FileButton/paperclip.svg";
+import ImageFileButton from "static/Chat/MessageForm/FileButton/paperclip.svg";
 
 class FileButton extends React.Component {
   onFileSelect(event) {
@@ -23,16 +23,19 @@ class FileButton extends React.Component {
 
   render() {
     return (
-      <div className="file-button">
-        <label className="file-button__label" htmlFor="file-button__input">
+      <div className={styles["file-button"]}>
+        <label
+          className={styles["file-button__label"]}
+          htmlFor="file-button__input"
+        >
           <img
-            className="file-button__image"
+            className={styles["file-button__image"]}
             src={ImageFileButton}
             alt="File button"
           />
         </label>
         <input
-          className="file-button__input"
+          className={styles["file-button__input"]}
           id="file-button__input"
           type="file"
           onChange={this.onFileSelect.bind(this)}
@@ -43,15 +46,13 @@ class FileButton extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleFileSelect: file =>
-      dispatch({
-        type: actionTypes.SEND_FILE,
-        file
-      })
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleFileSelect: file =>
+    dispatch({
+      type: actionTypes.SEND_FILE,
+      file
+    })
+});
 
 export default connect(
   null,

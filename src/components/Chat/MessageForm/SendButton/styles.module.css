@@ -1,12 +1,12 @@
 .send-button {
   flex-shrink: 0;
 
-  height: 50px;
-  width: 50px;
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
 
-  margin: 10px;
+  margin: var(--middle-margin);
 
-  background: url("../../../../static/Chat/MessageForm/SendButton/paper-plane.svg");
+  background: url("static/Chat/MessageForm/SendButton/paper-plane.svg");
   background-size: cover;
 
   border: 0;
@@ -18,7 +18,7 @@
 }
 
 .hidden {
-  /* visibility: hidden; */
+  composes: send-button;
   display: none;
 }
 

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./ChatList.css";
+import styles from "./styles.module.css";
 
-class ChatsList extends Component {
+class ChatList extends Component {
   render() {
     return (
-      <div className="chat-list">
-        <Link className="chat-list__chat" to="/chat/1">
+      <div className={styles["chat-list"]}>
+        <Link className={styles["chat-list__chat"]} to="/chat/1">
           Chat1
         </Link>
-        <Link className="chat-list__chat" to="/chat/2">
+        <Link className={styles["chat-list__chat"]} to="/chat/2">
           Chat2
         </Link>
       </div>
@@ -17,4 +17,4 @@ class ChatsList extends Component {
   }
 }
 
-export default ChatsList;
+export default ChatList;
