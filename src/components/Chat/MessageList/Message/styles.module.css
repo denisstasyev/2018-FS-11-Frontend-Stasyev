@@ -6,7 +6,8 @@
 
   font-size: var(--middle-font-size);
 
-  margin: 0px 10px 10px 10px;
+  margin-bottom: var(--middle-margin);
+
   padding: 5px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 

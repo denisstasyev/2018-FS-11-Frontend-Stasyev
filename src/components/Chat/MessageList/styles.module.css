@@ -7,6 +7,9 @@
 
   height: 100vh;
 
+  padding-left: var(--middle-padding);
+  padding-right: var(--middle-padding);
+
   overflow-x: hidden;
   overflow-y: auto;
 

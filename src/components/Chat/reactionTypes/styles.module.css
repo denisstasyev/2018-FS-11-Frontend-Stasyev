@@ -1,4 +1,6 @@
 .alien {
+  /* background-size: contain;
+  background-clip: initial; */
   background-image: url("static/Chat/reactionTypes/alien.png?sprite");
 }
 

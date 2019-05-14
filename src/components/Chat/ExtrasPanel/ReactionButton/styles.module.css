@@ -1,8 +1,6 @@
 .reaction-button {
   flex-shrink: 0;
 
-  background-size: cover;
-
   height: var(--small-icon-height);
   width: var(--small-icon-width);
   margin-left: 5px;

@@ -80,6 +80,9 @@ module.exports = function(webpackEnv) {
         options: cssOptions
       },
       {
+        loader: require.resolve("css-sprite-loader")
+      },
+      {
         // Options for PostCSS as we reference these options twice
         // Adds vendor prefixing based on your specified browser support in
         // package.json
@@ -474,6 +477,10 @@ module.exports = function(webpackEnv) {
       ]
     },
     plugins: [
+      // Added to run css-sprite-loader
+      new CSSSpritePlugin({
+        output: "./reactions"
+      }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -597,9 +604,7 @@ module.exports = function(webpackEnv) {
           watch: paths.appSrc,
           silent: true,
           formatter: typescriptFormatter
-        }),
-      // Added to run css-sprite-loader
-      new CSSSpritePlugin()
+        })
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
