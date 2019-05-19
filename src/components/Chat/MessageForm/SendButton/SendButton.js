@@ -1,60 +1,40 @@
 import React from "react";
-import "./SendButton.css";
+import { connect } from "react-redux";
+import styles from "./styles.module.css";
 
-import ImageSendButton from "../../../../static/Chat/MessageForm/SendButton/paper-plane.svg";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class SendButton extends React.Component {
-  sendMyLocation() {
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser!");
-      return;
-    }
-
-    function success(position) {
-      var text = `My location: (${position.coords.latitude}, ${
-        position.coords.longitude
-      })`;
-      this.props.updateData(this.props.id + 1, text, "", "");
-    }
-    function error() {
-      alert("Unable to retrieve your location!");
-    }
-
-    navigator.geolocation.getCurrentPosition(success.bind(this), error);
-  }
-
   onSubmit(event) {
     event.preventDefault();
-    if (this.props.text !== "") {
-      if (this.props.text === "sendMyLocation();") {
-        this.sendMyLocation();
-      } else {
-        this.props.updateData(this.props.id + 1, this.props.text, "", "");
-      }
-      this.props.updateDataMessageForm("");
-      this.props.textMessageForm.cleanValue();
-    }
+    this.props.handleSubmit(this.props.text);
   }
 
   render() {
     return (
-      <div className="send-button">
-        <label htmlFor="send-button__input">
-          <img
-            className="send-button__image"
-            src={ImageSendButton}
-            alt="Send button"
-          />
-        </label>
-        <input
-          className="send-button__input"
-          id="send-button__input"
-          type="button"
-          onClick={this.onSubmit.bind(this)}
-        />
-      </div>
+      <button
+        className={
+          this.props.text.length > 0 ? styles["send-button"] : styles["hidden"]
+        }
+        onClick={this.onSubmit.bind(this)}
+      />
     );
   }
 }
 
-export default SendButton;
+const mapStateToProps = state => ({
+  text: state.messageFormReducer.text
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: text =>
+    dispatch({
+      type: actionTypes.SEND_TEXT,
+      text
+    })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SendButton);

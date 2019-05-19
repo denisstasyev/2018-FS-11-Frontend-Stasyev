@@ -1,0 +1,101 @@
+.reaction-button {
+  flex-shrink: 0;
+
+  height: var(--small-icon-height);
+  width: var(--small-icon-width);
+  margin-left: 5px;
+
+  cursor: pointer;
+
+  transition: filter 0.1s linear;
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.reaction-button:hover {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
+}
+
+.reaction-button:active {
+  -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
+}
+
+.alien {
+  composes: reaction-button;
+  composes: alien from "../../reactionTypes/styles.module.css";
+}
+
+.alien-monster {
+  composes: reaction-button;
+  composes: alien-monster from "../../reactionTypes/styles.module.css";
+}
+
+.angry-face {
+  composes: reaction-button;
+  composes: angry-face from "../../reactionTypes/styles.module.css";
+}
+
+.anguished-face {
+  composes: reaction-button;
+  composes: anguished-face from "../../reactionTypes/styles.module.css";
+}
+
+.anxious-face-with-sweat {
+  composes: reaction-button;
+  composes: anxious-face-with-sweat from "../../reactionTypes/styles.module.css";
+}
+
+.astonished-face {
+  composes: reaction-button;
+  composes: astonished-face from "../../reactionTypes/styles.module.css";
+}
+
+.beaming-face-with-smiling-eyes {
+  composes: reaction-button;
+  composes: beaming-face-with-smiling-eyes from "../../reactionTypes/styles.module.css";
+}
+
+.cold-face {
+  composes: reaction-button;
+  composes: cold-face from "../../reactionTypes/styles.module.css";
+}
+
+.confounded-face {
+  composes: reaction-button;
+  composes: confounded-face from "../../reactionTypes/styles.module.css";
+}
+
+.confused-face {
+  composes: reaction-button;
+  composes: confused-face from "../../reactionTypes/styles.module.css";
+}
+
+.cowboy-hat-face {
+  composes: reaction-button;
+  composes: cowboy-hat-face from "../../reactionTypes/styles.module.css";
+}
+
+.crying-face {
+  composes: reaction-button;
+  composes: crying-face from "../../reactionTypes/styles.module.css";
+}
+
+.disappointed-face {
+  composes: reaction-button;
+  composes: disappointed-face from "../../reactionTypes/styles.module.css";
+}
+
+.dizzy-face {
+  composes: reaction-button;
+  composes: dizzy-face from "../../reactionTypes/styles.module.css";
+}
+
+.downcast-face-with-sweat {
+  composes: reaction-button;
+  composes: downcast-face-with-sweat from "../../reactionTypes/styles.module.css";
+}

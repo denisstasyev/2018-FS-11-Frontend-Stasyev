@@ -1,54 +1,20 @@
 import React from "react";
-import "./MessageList.css";
+import { connect } from "react-redux";
+import styles from "./styles.module.css";
 
-import Message from "./Message/Message";
+import { Message } from "./Message";
 
-import { getTime } from "../../../utils/utils";
+import * as actionTypes from "store/actionTypes/actionTypes";
 
 class MessageList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      messages: []
-    };
-
-    // Test data
-    this.state.messages.push(
-      <Message
-        id={-2}
-        text="Кто лучший ментор?"
-        time={getTime()}
-        image=""
-        file=""
-        isMy={true}
-        key={-2}
-      />
-    );
-    this.state.messages.push(
-      <Message
-        id={-1}
-        text="Мартин!"
-        time={getTime()}
-        image=""
-        file=""
-        isMy={false}
-        key={-1}
-      />
-    );
-  }
-
-  onDragOver(event) {
+  handleDragAndDrop(event) {
     event.preventDefault();
-    var files = Array.from(event.dataTransfer.files);
+    let files = Array.from(event.dataTransfer.files);
 
     files.forEach(function(file) {
-      var reader = new FileReader();
+      let reader = new FileReader();
       reader.onload = function() {
-        if (file.type.startsWith("image/")) {
-          this.props.updateData(this.props.id + 1, "", reader.result, file);
-        } else {
-          this.props.updateData(this.props.id + 1, "", "", file);
-        }
+        this.props.handleFileSelect(file);
       }.bind(this);
 
       reader.readAsDataURL(file);
@@ -56,31 +22,43 @@ class MessageList extends React.Component {
   }
 
   render() {
-    if (this.props.text || this.props.img || this.props.file) {
-      this.state.messages.push(
-        <Message
-          id={this.props.id}
-          text={this.props.text}
-          time={getTime()}
-          image={this.props.image}
-          file={this.props.file}
-          isMy={this.props.isMy}
-          key={this.props.id}
-        />
-      );
-    }
     return (
-      <ul
-        className="message-list"
-        onDrop={this.onDragOver.bind(this)}
-        onDragEnter={this.onDragOver.bind(this)}
-        onDragOver={this.onDragOver.bind(this)}
-        onDragLeave={this.onDragOver.bind(this)}
+      <div
+        className={styles["message-list"]}
+        onDrop={this.handleDragAndDrop.bind(this)}
+        onDragEnter={this.handleDragAndDrop.bind(this)}
+        onDragOver={this.handleDragAndDrop.bind(this)}
+        onDragLeave={this.handleDragAndDrop.bind(this)}
       >
-        {this.state.messages}
-      </ul>
+        {this.props.messageList.map((message, idx) => {
+          return (
+            <Message
+              key={idx}
+              text={message.text}
+              file={message.file}
+              isMy={message.isMy}
+              time={message.time}
+            />
+          );
+        })}
+      </div>
     );
   }
 }
 
-export default MessageList;
+const mapStateToProps = state => ({
+  messageList: state.messageListReducer.messageList
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleFileSelect: file =>
+    dispatch({
+      type: actionTypes.SEND_FILE,
+      file
+    })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MessageList);

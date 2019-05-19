@@ -1,0 +1,23 @@
+.header {
+  padding: var(--middle-padding);
+  background: grey;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-button {
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
+
+  background: url("static/Header/home-icon.svg");
+  background-size: cover;
+}
+
+.login-button {
+  height: var(--middle-icon-height);
+  width: var(--middle-icon-width);
+}

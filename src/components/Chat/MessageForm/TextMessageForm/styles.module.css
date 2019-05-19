@@ -1,0 +1,19 @@
+.text-message-form {
+  display: flex;
+
+  flex-grow: 1;
+  min-width: 0;
+
+  background-color: transparent;
+}
+
+.text-message-form__input {
+  font-size: var(--middle-font-size);
+
+  flex: auto;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
