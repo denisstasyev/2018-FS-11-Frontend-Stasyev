@@ -14,8 +14,8 @@ class ExtrasPanel extends React.Component {
       return (
         <div className={styles["extras-panel"]}>
           <div className={styles["extras-panel__actions"]}>
-            <FileButton />
-            <LocationButton />
+            <FileButton onMessage={this.props.onMessage} />
+            <LocationButton onMessage={this.props.onMessage} />
           </div>
           <div className={styles["extras-panel__reactions"]}>
             {reactionTypeList.map((reaction, idx) => (
@@ -23,6 +23,7 @@ class ExtrasPanel extends React.Component {
                 key={`${reaction.name}_${idx}`}
                 name={reaction.name}
                 text={reaction.text}
+                onMessage={this.props.onMessage}
               />
             ))}
           </div>

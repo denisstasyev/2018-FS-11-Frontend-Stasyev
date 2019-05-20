@@ -7,6 +7,7 @@ import * as actionTypes from "store/actionTypes/actionTypes";
 class ReactionButton extends React.Component {
   sendReaction() {
     this.props.handleSendText(this.props.text);
+    this.props.onMessage([this.props.text, null]);
   }
 
   updateText() {

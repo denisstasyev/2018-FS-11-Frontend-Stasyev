@@ -14,6 +14,7 @@ class TextMessageForm extends React.Component {
     event.preventDefault();
     if (this.props.text.length > 0) {
       this.props.handleSendText(this.props.text);
+      this.props.onMessage([this.props.text, null]);
     }
   }
 

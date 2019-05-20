@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-import { getReadableSize, sendToServer } from "utils/utils";
+import { getReadableSize } from "utils";
 
 import reactionTypeList from "../../reactionTypes";
 

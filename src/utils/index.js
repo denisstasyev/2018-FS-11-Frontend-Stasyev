@@ -20,9 +20,10 @@ export function sendToServer(text, file) {
   var formData = new FormData();
   formData.append("user", "Denis");
   formData.append("date", `${getTime()} ${new Date().toDateString()}`);
-  if (file !== "") {
+  if (file !== null) {
     formData.append("file", file);
-  } else {
+  }
+  if (text !== null) {
     formData.append("text", text);
   }
 
