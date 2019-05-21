@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-var config = {
+let config = {
   messagingSenderId: "225679507199"
 };
 firebase.initializeApp(config);

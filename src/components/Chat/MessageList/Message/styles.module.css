@@ -23,6 +23,26 @@
   align-self: flex-end;
   border-radius: 1em 1em 0.3em 1em;
   background: #08f;
+
+  animation: appear--my 1s;
+}
+
+@-webkit-keyframes appear--my {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #08f;
+  }
+}
+
+@keyframes appear--my {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #08f;
+  }
 }
 
 .message--alien {
@@ -30,6 +50,26 @@
   align-self: flex-start;
   border-radius: 1em 1em 1em 0.3em;
   background: #ddd;
+
+  animation: appear--alien 1s;
+}
+
+@-webkit-keyframes appear--alien {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ddd;
+  }
+}
+
+@keyframes appear--alien {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ddd;
+  }
 }
 
 .image-preview {
