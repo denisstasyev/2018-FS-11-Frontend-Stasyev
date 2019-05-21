@@ -9,12 +9,9 @@ import { sendToServer } from "utils";
 import workerCode from "./sharedWorker";
 
 class Chat extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      worker: this.getSharedWorker()
-    };
-  }
+  state = {
+    worker: this.getSharedWorker()
+  };
 
   render() {
     return (
