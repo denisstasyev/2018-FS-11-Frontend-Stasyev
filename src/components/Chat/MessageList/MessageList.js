@@ -8,10 +8,10 @@ import { Message } from "./Message";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class MessageList extends React.Component {
-  scrollToBottom = () => {
+  scrollToBottom() {
     const messagesContainer = ReactDOM.findDOMNode(this);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  };
+  }
 
   componentDidUpdate() {
     this.scrollToBottom();

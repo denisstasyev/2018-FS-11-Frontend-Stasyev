@@ -6,7 +6,13 @@ import Auth from "components/Auth/Auth";
 import { ChatList } from "components/ChatList";
 import { Chat } from "components/Chat";
 
+import { askForPermissioToReceiveNotifications } from "push-notification";
+
 class App extends Component {
+  componentDidMount() {
+    askForPermissioToReceiveNotifications();
+  }
+
   render() {
     return (
       <Router>
