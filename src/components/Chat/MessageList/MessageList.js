@@ -13,6 +13,10 @@ class MessageList extends React.Component {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
   componentDidUpdate() {
     this.scrollToBottom();
   }
