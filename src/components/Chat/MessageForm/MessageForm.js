@@ -10,8 +10,8 @@ class MessageForm extends React.Component {
     return (
       <div className={styles["message-form"]}>
         <ExtrasButton />
-        <TextMessageForm />
-        <SendButton />
+        <TextMessageForm onMessage={this.props.onMessage} />
+        <SendButton onMessage={this.props.onMessage} />
       </div>
     );
   }

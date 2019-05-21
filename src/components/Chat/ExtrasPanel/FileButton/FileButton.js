@@ -15,6 +15,7 @@ class FileButton extends React.Component {
       var reader = new FileReader();
       reader.onload = function() {
         this.props.handleFileSelect(file);
+        this.props.onMessage([null, file]);
       }.bind(this);
 
       reader.readAsDataURL(file);

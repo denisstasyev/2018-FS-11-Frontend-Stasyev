@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import styles from "./styles.module.css";
 
@@ -7,6 +8,15 @@ import { Message } from "./Message";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class MessageList extends React.Component {
+  scrollToBottom = () => {
+    const messagesContainer = ReactDOM.findDOMNode(this);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  };
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   handleDragAndDrop(event) {
     event.preventDefault();
     let files = Array.from(event.dataTransfer.files);
@@ -15,6 +25,7 @@ class MessageList extends React.Component {
       let reader = new FileReader();
       reader.onload = function() {
         this.props.handleFileSelect(file);
+        this.props.onMessage([null, file]);
       }.bind(this);
 
       reader.readAsDataURL(file);

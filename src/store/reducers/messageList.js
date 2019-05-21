@@ -1,6 +1,6 @@
 import * as actionTypes from "../actionTypes/actionTypes";
 import { updateObject } from "../utility";
-import { getTime } from "../../utils/utils";
+import { getTime } from "utils";
 
 const initialState = {
   i: 0,

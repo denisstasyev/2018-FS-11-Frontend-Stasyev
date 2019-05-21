@@ -16,6 +16,7 @@ class LocationButton extends React.Component {
         position.coords.longitude
       })`;
       this.props.handleTextSelect(text);
+      this.props.onMessage([text, null]);
     }
     function error() {
       alert("Unable to retrieve your location!");

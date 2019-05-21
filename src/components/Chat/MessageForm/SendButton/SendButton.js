@@ -8,6 +8,7 @@ class SendButton extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.handleSubmit(this.props.text);
+    this.props.onMessage([this.props.text, null]);
   }
 
   render() {
