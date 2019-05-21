@@ -7,7 +7,7 @@ import * as actionTypes from "store/actionTypes/actionTypes";
 import ImageFileButton from "static/Chat/MessageForm/FileButton/paperclip.svg";
 
 class FileButton extends React.Component {
-  onFileSelect(event) {
+  onFileSelect = event => {
     event.preventDefault();
     var files = Array.from(event.target.files);
 
@@ -20,7 +20,7 @@ class FileButton extends React.Component {
 
       reader.readAsDataURL(file);
     }, this);
-  }
+  };
 
   render() {
     return (

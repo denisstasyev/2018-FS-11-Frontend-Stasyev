@@ -23,11 +23,11 @@ class Chat extends React.Component {
     );
   }
 
-  onMessage(message) {
+  onMessage = message => {
     this.state.worker.then(worker => {
       worker.port.postMessage(message);
     });
-  }
+  };
 
   getSharedWorker() {
     const workerFile = new Blob([`(${workerCode})(self)`], {
@@ -52,9 +52,7 @@ class Chat extends React.Component {
     });
   }
 
-  onWorkerMessage(event) {
-    console.log(event.data[0]);
-    console.log(event.data[1]);
+  onWorkerMessage = event => {
     sendToServer(event.data[0], event.data[1]).then(response => {
       if (response) {
         console.log("Delivered!");
@@ -62,7 +60,7 @@ class Chat extends React.Component {
         console.log("Not delivered!");
       }
     });
-  }
+  };
 }
 
 export default Chat;

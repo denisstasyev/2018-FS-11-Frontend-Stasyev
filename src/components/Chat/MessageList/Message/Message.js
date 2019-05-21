@@ -27,7 +27,7 @@ class Message extends React.Component {
     return this.sanitize(text);
   };
 
-  handleReaction(text) {
+  handleReaction = text => {
     let result = text;
     result = this.preventXSSAttack(result);
     reactionTypeList.forEach(reaction => {
@@ -48,7 +48,7 @@ class Message extends React.Component {
       }
     });
     return { __html: result };
-  }
+  };
 
   render() {
     return (

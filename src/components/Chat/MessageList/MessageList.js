@@ -8,10 +8,10 @@ import { Message } from "./Message";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class MessageList extends React.Component {
-  scrollToBottom() {
+  scrollToBottom = () => {
     const messagesContainer = ReactDOM.findDOMNode(this);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+  };
 
   componentDidMount() {
     this.scrollToBottom();
@@ -21,7 +21,7 @@ class MessageList extends React.Component {
     this.scrollToBottom();
   }
 
-  handleDragAndDrop(event) {
+  handleDragAndDrop = event => {
     event.preventDefault();
     let files = Array.from(event.dataTransfer.files);
 
@@ -34,7 +34,7 @@ class MessageList extends React.Component {
 
       reader.readAsDataURL(file);
     }, this);
-  }
+  };
 
   render() {
     return (

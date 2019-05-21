@@ -5,18 +5,18 @@ import styles from "./styles.module.css";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class TextMessageForm extends React.Component {
-  onChange(event) {
+  onChange = event => {
     event.preventDefault();
     this.props.handleRewriteText(event.target.value);
-  }
+  };
 
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
     if (this.props.text.length > 0) {
       this.props.handleSendText(this.props.text);
       this.props.onMessage([this.props.text, null]);
     }
-  }
+  };
 
   render() {
     return (

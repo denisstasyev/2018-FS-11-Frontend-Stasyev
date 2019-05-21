@@ -5,14 +5,14 @@ import styles from "./styles.module.css";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class ReactionButton extends React.Component {
-  sendReaction() {
+  sendReaction = () => {
     this.props.handleSendText(this.props.text);
     this.props.onMessage([this.props.text, null]);
-  }
+  };
 
-  updateText() {
+  updateText = () => {
     this.props.handleUpdateText(this.props.text);
-  }
+  };
 
   render() {
     return (

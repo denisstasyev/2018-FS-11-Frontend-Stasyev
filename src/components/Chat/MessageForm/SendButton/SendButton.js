@@ -5,11 +5,11 @@ import styles from "./styles.module.css";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class SendButton extends React.Component {
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
     this.props.handleSubmit(this.props.text);
     this.props.onMessage([this.props.text, null]);
-  }
+  };
 
   render() {
     return (
