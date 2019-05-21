@@ -9,26 +9,6 @@ import reactionTypeList from "../../reactionTypes";
 const imagePattern = /^image\.*/;
 
 class Message extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     delivered: "not yet"
-  //   };
-  // }
-
-  // sendAndUpdate(text, file) {
-  //   if (this.state.delivered === "not yet") {
-  //     this.setState({ delivered: "pending" });
-  //     sendToServer(text, file).then(response => {
-  //       if (response) {
-  //         this.setState({ delivered: "true" });
-  //       } else {
-  //         this.setState({ delivered: "false" });
-  //       }
-  //     });
-  //   }
-  // }
-
   sanitize = string => {
     const map = {
       "&": "&amp;",

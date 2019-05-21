@@ -4,8 +4,6 @@ const app = express();
 
 // default options
 app.use(fileUpload());
-// app.use(express.static("dist"));
-// app.use(express.static("dist/create"));
 
 app.post("/message", function(req, res) {
   let i = 0;
