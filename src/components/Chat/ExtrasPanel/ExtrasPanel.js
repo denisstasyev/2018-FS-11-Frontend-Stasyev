@@ -34,7 +34,7 @@ class ExtrasPanel extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isExtrasPanelVisible: state.messageFormReducer.isExtrasPanelVisible
+  isExtrasPanelVisible: state.messageFormReducer.get("isExtrasPanelVisible")
 });
 
 export default connect(

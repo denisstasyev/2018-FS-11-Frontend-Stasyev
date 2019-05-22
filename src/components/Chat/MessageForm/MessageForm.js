@@ -5,7 +5,7 @@ import { ExtrasButton } from "./ExtrasButton";
 import { TextMessageForm } from "./TextMessageForm";
 import { SendButton } from "./SendButton";
 
-class MessageForm extends React.Component {
+class MessageForm extends React.PureComponent {
   render() {
     return (
       <div className={styles["message-form"]}>

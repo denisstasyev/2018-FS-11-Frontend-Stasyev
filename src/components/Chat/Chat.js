@@ -8,7 +8,7 @@ import { MessageForm } from "./MessageForm";
 import { sendToServer } from "utils";
 import workerCode from "./sharedWorker";
 
-class Chat extends React.Component {
+class Chat extends React.PureComponent {
   state = {
     worker: this.getSharedWorker()
   };

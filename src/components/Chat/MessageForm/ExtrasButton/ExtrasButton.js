@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 import * as actionTypes from "store/actionTypes/actionTypes";
 
-class ExtrasButton extends React.Component {
+class ExtrasButton extends React.PureComponent {
   render() {
     return (
       <button

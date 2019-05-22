@@ -1,10 +1,12 @@
+import { fromJS } from "immutable";
+
 import * as actionTypes from "store/actionTypes/actionTypes";
 
-const initialState = {
+const initialState = fromJS({
   token: null,
   error: null,
   loading: false
-};
+});
 
 const authStart = (state, action) => {
   return {

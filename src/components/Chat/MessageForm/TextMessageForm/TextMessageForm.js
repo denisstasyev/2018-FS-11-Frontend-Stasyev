@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 import * as actionTypes from "store/actionTypes/actionTypes";
 
-class TextMessageForm extends React.Component {
+class TextMessageForm extends React.PureComponent {
   onChange = event => {
     event.preventDefault();
     this.props.handleRewriteText(event.target.value);
@@ -34,7 +34,7 @@ class TextMessageForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  text: state.messageFormReducer.text
+  text: state.messageFormReducer.get("text")
 });
 
 const mapDispatchToProps = dispatch => ({
