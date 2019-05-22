@@ -26,11 +26,11 @@ class MessageList extends React.Component {
     let files = Array.from(event.dataTransfer.files);
 
     files.forEach(function(file) {
-      let reader = new FileReader();
-      reader.onload = function() {
+      const reader = new FileReader();
+      reader.onload = () => {
         this.props.handleFileSelect(file);
         this.props.onMessage([null, file]);
-      }.bind(this);
+      };
 
       reader.readAsDataURL(file);
     }, this);
@@ -40,10 +40,10 @@ class MessageList extends React.Component {
     return (
       <div
         className={styles["message-list"]}
-        onDrop={this.handleDragAndDrop.bind(this)}
-        onDragEnter={this.handleDragAndDrop.bind(this)}
-        onDragOver={this.handleDragAndDrop.bind(this)}
-        onDragLeave={this.handleDragAndDrop.bind(this)}
+        onDrop={this.handleDragAndDrop}
+        onDragEnter={this.handleDragAndDrop}
+        onDragOver={this.handleDragAndDrop}
+        onDragLeave={this.handleDragAndDrop}
       >
         {this.props.messageList.map((message, idx) => {
           return (

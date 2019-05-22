@@ -17,7 +17,7 @@ class SendButton extends React.Component {
         className={
           this.props.text.length > 0 ? styles["send-button"] : styles["hidden"]
         }
-        onClick={this.onSubmit.bind(this)}
+        onClick={this.onSubmit}
       />
     );
   }

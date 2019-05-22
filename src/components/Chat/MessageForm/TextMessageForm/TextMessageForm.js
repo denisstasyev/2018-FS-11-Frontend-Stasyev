@@ -20,16 +20,13 @@ class TextMessageForm extends React.Component {
 
   render() {
     return (
-      <form
-        className={styles["text-message-form"]}
-        onSubmit={this.onSubmit.bind(this)}
-      >
+      <form className={styles["text-message-form"]} onSubmit={this.onSubmit}>
         <input
           className={styles["text-message-form__input"]}
           value={this.props.text}
           type="text"
           placeholder="Enter your message"
-          onChange={this.onChange.bind(this)}
+          onChange={this.onChange}
         />
       </form>
     );

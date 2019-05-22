@@ -18,8 +18,8 @@ class ReactionButton extends React.Component {
     return (
       <span
         className={styles[this.props.name]}
-        onClick={this.updateText.bind(this)}
-        onDoubleClick={this.sendReaction.bind(this)}
+        onClick={this.updateText}
+        onDoubleClick={this.sendReaction}
       />
     );
   }

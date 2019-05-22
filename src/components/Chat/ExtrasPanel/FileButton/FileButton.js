@@ -9,14 +9,14 @@ import ImageFileButton from "static/Chat/MessageForm/FileButton/paperclip.svg";
 class FileButton extends React.Component {
   onFileSelect = event => {
     event.preventDefault();
-    var files = Array.from(event.target.files);
+    let files = Array.from(event.target.files);
 
     files.forEach(function(file) {
-      var reader = new FileReader();
-      reader.onload = function() {
+      const reader = new FileReader();
+      reader.onload = () => {
         this.props.handleFileSelect(file);
         this.props.onMessage([null, file]);
-      }.bind(this);
+      };
 
       reader.readAsDataURL(file);
     }, this);
@@ -39,7 +39,7 @@ class FileButton extends React.Component {
           className={styles["file-button__input"]}
           id="file-button__input"
           type="file"
-          onChange={this.onFileSelect.bind(this)}
+          onChange={this.onFileSelect}
           multiple
         />
       </div>

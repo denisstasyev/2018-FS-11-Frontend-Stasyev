@@ -29,7 +29,7 @@ class LocationButton extends React.Component {
     return (
       <button
         className={styles["location-button"]}
-        onClick={this.sendMyLocation.bind(this)}
+        onClick={this.sendMyLocation}
       />
     );
   }

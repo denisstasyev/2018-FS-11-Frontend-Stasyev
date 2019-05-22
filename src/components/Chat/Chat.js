@@ -16,9 +16,9 @@ class Chat extends React.Component {
   render() {
     return (
       <div className={styles["chat"]}>
-        <MessageList onMessage={this.onMessage.bind(this)} />
-        <ExtrasPanel onMessage={this.onMessage.bind(this)} />
-        <MessageForm onMessage={this.onMessage.bind(this)} />
+        <MessageList onMessage={this.onMessage} />
+        <ExtrasPanel onMessage={this.onMessage} />
+        <MessageForm onMessage={this.onMessage} />
       </div>
     );
   }
@@ -37,10 +37,7 @@ class Chat extends React.Component {
       const reader = new FileReader();
       reader.addEventListener("loadend", event => {
         const worker = new SharedWorker(event.target.result);
-        worker.port.addEventListener(
-          "message",
-          this.onWorkerMessage.bind(this)
-        );
+        worker.port.addEventListener("message", this.onWorkerMessage);
         worker.port.start();
         window.addEventListener("beforeunload", () => {
           worker.port.postMessage("disconnect");

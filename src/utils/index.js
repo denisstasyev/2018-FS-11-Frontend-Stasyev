@@ -11,13 +11,13 @@ export function getReadableSize(size) {
 }
 
 export function getTime() {
-  var date = new Date();
-  var timeRegex = "^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?";
+  let date = new Date();
+  let timeRegex = "^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?";
   return date.toTimeString().match(timeRegex)[0];
 }
 
 export function sendToServer(text, file) {
-  var formData = new FormData();
+  let formData = new FormData();
   formData.append("user", "Denis");
   formData.append("date", `${getTime()} ${new Date().toDateString()}`);
   if (file !== null) {
