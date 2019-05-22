@@ -16,18 +16,18 @@ class Chat extends React.Component {
   render() {
     return (
       <div className={styles["chat"]}>
-        <MessageList onMessage={this.onMessage.bind(this)} />
-        <ExtrasPanel onMessage={this.onMessage.bind(this)} />
-        <MessageForm onMessage={this.onMessage.bind(this)} />
+        <MessageList onMessage={this.onMessage} />
+        <ExtrasPanel onMessage={this.onMessage} />
+        <MessageForm onMessage={this.onMessage} />
       </div>
     );
   }
 
-  onMessage(message) {
+  onMessage = message => {
     this.state.worker.then(worker => {
       worker.port.postMessage(message);
     });
-  }
+  };
 
   getSharedWorker() {
     const workerFile = new Blob([`(${workerCode})(self)`], {
@@ -37,10 +37,7 @@ class Chat extends React.Component {
       const reader = new FileReader();
       reader.addEventListener("loadend", event => {
         const worker = new SharedWorker(event.target.result);
-        worker.port.addEventListener(
-          "message",
-          this.onWorkerMessage.bind(this)
-        );
+        worker.port.addEventListener("message", this.onWorkerMessage);
         worker.port.start();
         window.addEventListener("beforeunload", () => {
           worker.port.postMessage("disconnect");
@@ -52,9 +49,7 @@ class Chat extends React.Component {
     });
   }
 
-  onWorkerMessage(event) {
-    console.log(event.data[0]);
-    console.log(event.data[1]);
+  onWorkerMessage = event => {
     sendToServer(event.data[0], event.data[1]).then(response => {
       if (response) {
         console.log("Delivered!");
@@ -62,7 +57,7 @@ class Chat extends React.Component {
         console.log("Not delivered!");
       }
     });
-  }
+  };
 }
 
 export default Chat;

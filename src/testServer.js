@@ -4,15 +4,13 @@ const app = express();
 
 // default options
 app.use(fileUpload());
-// app.use(express.static("dist"));
-// app.use(express.static("dist/create"));
 
 app.post("/message", function(req, res) {
   let i = 0;
   while (i < 100000005) {
     i++;
   }
-  var result = Promise.resolve();
+  let result = Promise.resolve();
   if (typeof req.headers.origin === "string") {
     console.log(req.body);
     res.set("Access-Control-Allow-Origin", req.headers.origin);
@@ -23,7 +21,7 @@ app.post("/message", function(req, res) {
     }
 
     let sampleFile = req.files.file;
-    var filename = sampleFile.name;
+    let filename = sampleFile.name;
     console.log(filename);
 
     result = new Promise((resolve, reject) => {

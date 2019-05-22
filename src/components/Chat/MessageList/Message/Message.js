@@ -9,26 +9,6 @@ import reactionTypeList from "../../reactionTypes";
 const imagePattern = /^image\.*/;
 
 class Message extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     delivered: "not yet"
-  //   };
-  // }
-
-  // sendAndUpdate(text, file) {
-  //   if (this.state.delivered === "not yet") {
-  //     this.setState({ delivered: "pending" });
-  //     sendToServer(text, file).then(response => {
-  //       if (response) {
-  //         this.setState({ delivered: "true" });
-  //       } else {
-  //         this.setState({ delivered: "false" });
-  //       }
-  //     });
-  //   }
-  // }
-
   sanitize = string => {
     const map = {
       "&": "&amp;",
@@ -47,7 +27,7 @@ class Message extends React.Component {
     return this.sanitize(text);
   };
 
-  handleReaction(text) {
+  handleReaction = text => {
     let result = text;
     result = this.preventXSSAttack(result);
     reactionTypeList.forEach(reaction => {
@@ -68,7 +48,7 @@ class Message extends React.Component {
       }
     });
     return { __html: result };
-  }
+  };
 
   render() {
     return (

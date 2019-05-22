@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import * as actionTypes from "store/actionTypes/actionTypes";
 
 class LocationButton extends React.Component {
-  sendMyLocation() {
+  sendMyLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser!");
       return;
@@ -23,13 +23,13 @@ class LocationButton extends React.Component {
     }
 
     navigator.geolocation.getCurrentPosition(success.bind(this), error);
-  }
+  };
 
   render() {
     return (
       <button
         className={styles["location-button"]}
-        onClick={this.sendMyLocation.bind(this)}
+        onClick={this.sendMyLocation}
       />
     );
   }

@@ -11,18 +11,9 @@ const initialState = {
       file: "",
       isMy: false,
       time: getTime()
-      // delivered: false
     }
   ]
 };
-
-/*
-const updateDeliver = (state, action) => {
-  const updatedMessageList =
-    state.messageList; //.filter(result => result.id !== action.resultElId)
-  return updateObject(state, { messageList: updatedMessageList });
-};
-*/
 
 const reducer = (state = initialState, action) => {
   // eslint-disable-next-line default-case
@@ -36,7 +27,6 @@ const reducer = (state = initialState, action) => {
           file: "",
           isMy: true,
           time: getTime()
-          // delivered: false
         })
       });
     case actionTypes.SEND_FILE:
@@ -48,14 +38,8 @@ const reducer = (state = initialState, action) => {
           file: action.file,
           isMy: true,
           time: getTime()
-          // delivered: false
         })
       });
-
-    /*
-    case actionTypes.UPDATE_DELIVERY_STATUS:
-      return updateDeliver(state, action);
-    */
   }
 
   return state;
