@@ -67,6 +67,7 @@
     "build": "node scripts/build.js",
     "test": "CI=true node scripts/test.js",
     "test:coverage": "npm test -- --coverage",
+    "before-deploy": "git config --global user.email publish@travis.github && git config --global user.name 'Travis'",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
