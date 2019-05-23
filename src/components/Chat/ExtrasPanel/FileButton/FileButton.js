@@ -11,7 +11,7 @@ class FileButton extends React.Component {
     event.preventDefault();
     let files = Array.from(event.target.files);
 
-    files.forEach(function(file) {
+    files.forEach(file => {
       const reader = new FileReader();
       reader.onload = () => {
         this.props.handleFileSelect(file);

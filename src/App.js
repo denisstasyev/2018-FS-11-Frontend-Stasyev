@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { SentryErrorLogger } from "components/SentryErrorLogger";
 import { Header } from "components/Header";
 import Auth from "components/Auth/Auth";
 import { ChatList } from "components/ChatList";
@@ -8,9 +9,10 @@ import { Chat } from "components/Chat";
 
 import { askForPermissioToReceiveNotifications } from "push-notification";
 
-class App extends Component {
+class App extends PureComponent {
   componentDidMount() {
     askForPermissioToReceiveNotifications();
+    console.info(`%c Welcome, developer!`, `font-size: 20px; color: green`);
   }
 
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
             <Route path="/chat/:id" component={Chat} />
             <Route path="/login" component={Auth} />
           </Switch>
+
+          <SentryErrorLogger />
         </Fragment>
       </Router>
     );

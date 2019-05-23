@@ -1,43 +1,38 @@
+import { Map } from "immutable";
+
 import * as actionTypes from "../actionTypes/actionTypes";
 
-const initialState = {
+const initialState = Map({
   text: "",
   file: "",
   isExtrasPanelVisible: false
-};
+});
 
 const reducer = (state = initialState, action) => {
   // eslint-disable-next-line default-case
   switch (action.type) {
     case actionTypes.SEND_TEXT:
-      return {
-        text: "",
-        file: "",
-        isExtrasPanelVisible: false
-      };
+      return initialState;
     case actionTypes.SEND_FILE:
-      return {
-        text: state.text,
-        file: "",
-        isExtrasPanelVisible: false
-      };
+      return initialState.set("text", state.get("text"));
     case actionTypes.UPDATE_TEXT:
-      return {
-        text: state.text + action.text,
-        file: state.file,
-        isExtrasPanelVisible: state.isExtrasPanelVisible
-      };
+      return Map({
+        text: state.get("text") + action.text,
+        file: state.get("file"),
+        isExtrasPanelVisible: state.get("isExtrasPanelVisible")
+      });
     case actionTypes.REWRITE_TEXT:
-      return {
+      return Map({
         text: action.text,
-        file: state.file,
-        isExtrasPanelVisible: state.isExtrasPanelVisible
-      };
+        file: state.get("file"),
+        isExtrasPanelVisible: state.get("isExtrasPanelVisible")
+      });
     case actionTypes.TOGGLE_EXTRAS:
-      return {
-        ...state,
-        isExtrasPanelVisible: !state.isExtrasPanelVisible
-      };
+      return Map({
+        text: state.get("text"),
+        file: state.get("file"),
+        isExtrasPanelVisible: !state.get("isExtrasPanelVisible")
+      });
   }
 
   return state;

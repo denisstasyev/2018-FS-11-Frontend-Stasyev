@@ -1,4 +1,4 @@
-export function getReadableSize(size) {
+export const getReadableSize = size => {
   const units = ["B", "KB", "MB", "GB", "TB", "PB"];
   let newSize = size;
   for (const item in units) {
@@ -8,15 +8,15 @@ export function getReadableSize(size) {
     newSize /= 1024;
   }
   return `${Math.ceil(size)} B`;
-}
+};
 
-export function getTime() {
+export const getTime = () => {
   let date = new Date();
   let timeRegex = "^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?";
   return date.toTimeString().match(timeRegex)[0];
-}
+};
 
-export function sendToServer(text, file) {
+export const sendToServer = (text, file) => {
   let formData = new FormData();
   formData.append("user", "Denis");
   formData.append("date", `${getTime()} ${new Date().toDateString()}`);
@@ -37,4 +37,4 @@ export function sendToServer(text, file) {
     .catch(function(error) {
       console.log(error);
     });
-}
+};

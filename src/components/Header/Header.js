@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-class Header extends Component {
+class Header extends React.PureComponent {
   render() {
     return (
       <header className={styles["header"]}>

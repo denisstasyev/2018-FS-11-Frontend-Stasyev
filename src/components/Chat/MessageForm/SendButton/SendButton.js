@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 import * as actionTypes from "store/actionTypes/actionTypes";
 
-class SendButton extends React.Component {
+class SendButton extends React.PureComponent {
   onSubmit = event => {
     event.preventDefault();
     this.props.handleSubmit(this.props.text);
@@ -24,7 +24,7 @@ class SendButton extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  text: state.messageFormReducer.text
+  text: state.messageFormReducer.get("text")
 });
 
 const mapDispatchToProps = dispatch => ({

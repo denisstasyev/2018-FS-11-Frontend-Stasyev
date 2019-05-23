@@ -8,7 +8,7 @@ import reactionTypeList from "../../reactionTypes";
 
 const imagePattern = /^image\.*/;
 
-class Message extends React.Component {
+class Message extends React.PureComponent {
   sanitize = string => {
     const map = {
       "&": "&amp;",

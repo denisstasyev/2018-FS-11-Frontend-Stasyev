@@ -7,7 +7,7 @@ import { Message } from "./Message";
 
 import * as actionTypes from "store/actionTypes/actionTypes";
 
-class MessageList extends React.Component {
+class MessageList extends React.PureComponent {
   scrollToBottom = () => {
     const messagesContainer = ReactDOM.findDOMNode(this);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -25,7 +25,7 @@ class MessageList extends React.Component {
     event.preventDefault();
     let files = Array.from(event.dataTransfer.files);
 
-    files.forEach(function(file) {
+    files.forEach(file => {
       const reader = new FileReader();
       reader.onload = () => {
         this.props.handleFileSelect(file);
@@ -49,10 +49,10 @@ class MessageList extends React.Component {
           return (
             <Message
               key={idx}
-              text={message.text}
-              file={message.file}
-              isMy={message.isMy}
-              time={message.time}
+              text={message.get("text")}
+              file={message.get("file")}
+              isMy={message.get("isMy")}
+              time={message.get("time")}
             />
           );
         })}
@@ -62,7 +62,7 @@ class MessageList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  messageList: state.messageListReducer.messageList
+  messageList: state.messageListReducer.get("messageList")
 });
 
 const mapDispatchToProps = dispatch => ({

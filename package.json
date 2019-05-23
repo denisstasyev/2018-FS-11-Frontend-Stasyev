@@ -1,9 +1,11 @@
 {
-  "name": "messenger-frontend",
+  "name": "2018-FS-11-Frontend-Stasyev",
+  "homepage": "https://denisstasyev.github.io/2018-FS-11-Frontend-Stasyev/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
+    "@sentry/browser": "^5.3.0",
     "@svgr/webpack": "4.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -28,11 +30,14 @@
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
+    "husky": "^2.3.0",
     "identity-obj-proxy": "3.0.0",
+    "immutable": "^4.0.0-rc.12",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
+    "lint-staged": "^8.1.7",
     "mini-css-extract-plugin": "0.5.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
@@ -59,8 +64,10 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "build": "CI=true node scripts/build.js",
+    "test": "node scripts/test.js",
+    "test:coverage": "npm test -- --coverage",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -77,7 +84,8 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "express-fileupload": "^1.1.1-alpha.3",
-    "prettier": "^1.16.4"
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.17.1"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -127,6 +135,21 @@
   "babel": {
     "presets": [
       "react-app"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
     ]
   }
 }
