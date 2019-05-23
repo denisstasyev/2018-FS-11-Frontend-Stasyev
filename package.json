@@ -66,8 +66,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "CI=true node scripts/test.js",
-    "test:coverage": "npm test -- --coverage",
-    "deploy": "gh-pages -d build"
+    "test:coverage": "npm test -- --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -84,7 +83,6 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "express-fileupload": "^1.1.1-alpha.3",
-    "gh-pages": "^2.0.1",
     "prettier": "^1.17.1"
   },
   "jest": {
