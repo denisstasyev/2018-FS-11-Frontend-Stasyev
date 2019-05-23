@@ -1,6 +1,6 @@
 {
-  "name": "messenger-frontend",
-  "homepage": "https://denisstasyev.github.io/messenger-frontend/",
+  "name": "2018-FS-11-Frontend-Stasyev",
+  "homepage": "https://denisstasyev.github.io/2018-FS-11-Frontend-Stasyev/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -65,7 +65,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "CI=true node scripts/test.js"
+    "test": "CI=true node scripts/test.js",
+    "test:coverage": "npm test -- --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
