@@ -66,7 +66,8 @@
     "start": "node scripts/start.js",
     "build": "CI=true node scripts/build.js",
     "test": "node scripts/test.js",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

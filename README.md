@@ -1,47 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ![Logo of the project](https://user-images.githubusercontent.com/16698238/57081592-bb839800-6cfd-11e9-997d-86f642d4d13b.png) Messenger that will appear one day, I hope
 
-## Available Scripts
+> Создано в ходе учёбы на образовательном проекте "Технотрек", Mail.Ru
 
-In the project directory, you can run:
+В этом репозитории вы можете найти Frontend часть будущего мессенджера.
+Проект был написан на React с использованием [Create React App](https://github.com/facebook/create-react-app) для развёртывания приложения.
+
+## Использованные технологии
+
+- **[Github](https://github.com)** для работы над проектом в течение курса
+  и выполнения домашних заданий
+- **[Google](https://google.com)** для работы с **[firebase](https://firebase.google.com/)**
+- **[Sentry](https://sentry.io)** для последующей настройки логгирования
+- **[Travis](https://travis-ci.org)** для последующей настройки CI/CD
+- и другие
+
+# Развёртывание приложения
+
+Чтобы развернуть это приложение достаточно сделать:
+
+```bash
+git clone https://github.com/denisstasyev/2018-FS-11-Frontend-Stasyev.git
+cd 2018-FS-11-Frontend-Stasyev
+npm install
+```
+
+# Использование
+
+Находясь в папке с приложением можно запустить скрипты:
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Запускает приложение в режиме разработки.<br>
+Откройте [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запускает тесты
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Собирает приложение в `build` папке.<br>
+Он корректно объединяет React в production режиме и оптимизирует сборку для лучшей производительности.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+В секции [deployment](https://facebook.github.io/create-react-app/docs/deployment) больше информации.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Разработка
 
-### `npm run eject`
+Работа над проектом ведется путем получения задач/домашних работ
+после каждой лекции.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [Задача 1](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-1)
+- [Задача 2](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-2)
+- [Задача 3](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-3)
+- [Задача 4](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-4)
+- [Задача 5](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-5)
+- [Задача 6](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-6)
+- [Задача 7](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-7)
+- [Задача 8](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-8)
+- [Задача 9](https://github.com/frontend-track-mail-ru/tt-fullstack/tree/master/2sem/front/lesson-9)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Преподаватели курса
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Мартин Комитски](https://track.mail.ru/profile/m.komitski/)
+- [Борис Ребров](https://track.mail.ru/profile/b.rebrov/)
+- [Алексей Опалев](https://track.mail.ru/profile/a.opalev/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Документация по React
 
-## Learn More
+Вы можете узнать больше в:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React documentation](https://reactjs.org/).
+
+## Полезные ссылки
 
 ### Code Splitting
 
@@ -66,3 +98,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+```
+
+```
