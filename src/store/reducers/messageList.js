@@ -7,13 +7,13 @@ import { getTime } from "utils";
 const initialState = Map({
   i: 0,
   messageList: List([
-    {
+    Map({
       id: 0,
       text: "Hello!",
       file: "",
       isMy: false,
       time: getTime()
-    }
+    })
   ])
 });
 
@@ -36,13 +36,15 @@ const reducer = (state = initialState, action) => {
       // );
       return Map({
         i: state.get("i") + 1,
-        messageList: state.get("messageList").push({
-          id: state.get("i"),
-          text: action.text,
-          file: "",
-          isMy: true,
-          time: getTime()
-        })
+        messageList: state.get("messageList").push(
+          Map({
+            id: state.get("i"),
+            text: action.text,
+            file: "",
+            isMy: true,
+            time: getTime()
+          })
+        )
       });
 
     case actionTypes.SEND_FILE:
@@ -61,13 +63,15 @@ const reducer = (state = initialState, action) => {
       // );
       return Map({
         i: state.get("i") + 1,
-        messageList: state.get("messageList").push({
-          id: state.get("i"),
-          text: "",
-          file: action.file,
-          isMy: true,
-          time: getTime()
-        })
+        messageList: state.get("messageList").push(
+          Map({
+            id: state.get("i"),
+            text: "",
+            file: action.file,
+            isMy: true,
+            time: getTime()
+          })
+        )
       });
   }
 

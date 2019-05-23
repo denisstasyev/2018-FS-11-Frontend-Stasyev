@@ -49,10 +49,10 @@ class MessageList extends React.PureComponent {
           return (
             <Message
               key={idx}
-              text={message.text}
-              file={message.file}
-              isMy={message.isMy}
-              time={message.time}
+              text={message.get("text")}
+              file={message.get("file")}
+              isMy={message.get("isMy")}
+              time={message.get("time")}
             />
           );
         })}

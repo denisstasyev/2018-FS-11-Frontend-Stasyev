@@ -12,17 +12,9 @@ const reducer = (state = initialState, action) => {
   // eslint-disable-next-line default-case
   switch (action.type) {
     case actionTypes.SEND_TEXT:
-      return Map({
-        text: "",
-        file: "",
-        isExtrasPanelVisible: false
-      });
+      return initialState;
     case actionTypes.SEND_FILE:
-      return Map({
-        text: state.get("text"),
-        file: "",
-        isExtrasPanelVisible: false
-      });
+      return initialState.set("text", state.get("text"));
     case actionTypes.UPDATE_TEXT:
       return Map({
         text: state.get("text") + action.text,
