@@ -5,6 +5,8 @@
 В этом репозитории вы можете найти Frontend часть будущего мессенджера.
 Проект был написан на React с использованием [Create React App](https://github.com/facebook/create-react-app) для развёртывания приложения.
 
+![Result](/result/result.png)
+
 ## Использованные технологии
 
 - **[Github](https://github.com)** для работы над проектом в течение курса
