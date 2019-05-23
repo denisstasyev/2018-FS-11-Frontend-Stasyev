@@ -1,6 +1,5 @@
 {
-  "name": "2018-FS-11-Frontend-Stasyev",
-  "homepage": "https://denisstasyev.github.io/2018-FS-11-Frontend-Stasyev/",
+  "name": "messenger-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -152,5 +151,7 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "name": "2018-FS-11-Frontend-Stasyev",
+  "homepage": "https://denisstasyev.github.io/2018-FS-11-Frontend-Stasyev/"
 }
