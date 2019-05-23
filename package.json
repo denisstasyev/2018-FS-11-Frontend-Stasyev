@@ -1,5 +1,5 @@
 {
-  "name": "messenger-frontend",
+  "name": "2018-FS-11-Frontend-Stasyev",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -67,7 +67,7 @@
     "test": "CI=true node scripts/test.js",
     "test:coverage": "npm test -- --coverage",
     "before-deploy": "git config --global user.email publish@travis.github && git config --global user.name 'Travis'",
-    "deploy": "CI=true gh-pages -d build"
+    "deploy": "gh-pages-with-token -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -85,6 +85,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "express-fileupload": "^1.1.1-alpha.3",
     "gh-pages": "^2.0.1",
+    "gh-pages-with-token": "^1.0.0",
     "prettier": "^1.17.1"
   },
   "jest": {
@@ -152,6 +153,5 @@
       "git add"
     ]
   },
-  "name": "2018-FS-11-Frontend-Stasyev",
   "homepage": "https://denisstasyev.github.io/2018-FS-11-Frontend-Stasyev/"
 }
